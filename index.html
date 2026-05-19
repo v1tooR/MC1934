@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MC 1934 — Massa I Carni. Restaurante italiano em Campos do Jordão, homenagem à terra, à memória e ao prazer de comer bem.">
+  <meta property="og:title" content="MC 1934 — Massa I Carni | Campos do Jordão">
+  <meta property="og:description" content="Uma cidade com 150 anos de história. Uma mesa para você vivê-la.">
+  <meta property="og:type" content="website">
+  <title>MC 1934 — Massa I Carni | Campos do Jordão</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo/1934-preto.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Caveat:wght@400;500;600;700&family=Limelight&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+  <style>
+
+  /* ─── 01. VARIÁVEIS ─── */
+  :root {
+    --carmesim:        #B22222;
+    --marfim:          #FFEDCE;
+    --oliveira:        #A69C12;
+    --carmesim-escuro: #7A1515;
+    --marfim-escuro:   #F0D9B5;
+    --preto-quente:    #1A1210;
+    --carvao:          #2C2220;
+    --off-white:       #FDF8F0;
+    --font-display:    'Cormorant Garamond', Georgia, serif;
+    --font-corpo:      'Lato', Helvetica, sans-serif;
+    --font-script:     'Caveat', cursive;
+    --pv-desk:  120px;
+    --pv-mob:    72px;
+    --ph-desk:    8vw;
+    --ph-mob:    24px;
+    --t-base: 0.3s ease;
+    --t-slow: 0.6s ease;
+  }
+
+  /* ─── 02. RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--preto-quente);
+    color: var(--marfim);
+    font-family: var(--font-corpo);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+  button { border: none; background: none; cursor: none; }
+  * { cursor: none; }
+
+  /* ─── 03. CURSOR ─── */
+  .cursor-ponto {
+    position: fixed; width: 7px; height: 7px;
+    background: var(--off-white); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    mix-blend-mode: difference;
+    will-change: left, top;
+  }
+  .cursor-anel {
+    position: fixed; width: 32px; height: 32px;
+    border: 1px solid rgba(253,248,240,.55); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: width .22s ease, height .22s ease, border-color .22s ease;
+    mix-blend-mode: difference;
+    will-change: left, top;
+  }
+  .cursor-grande .cursor-ponto { transform: translate(-50%,-50%) scale(3); }
+  .cursor-grande .cursor-anel  { width: 58px; height: 58px; border-color: rgba(178,34,34,.75); }
+
+  /* ─── 04. NAVEGAÇÃO ─── */
+  nav {
+    position: fixed; top: 0; width: 100%;
+    padding: 20px var(--ph-desk);
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 24px;
+    z-index: 100;
+    transition: background var(--t-base), padding var(--t-base);
+  }
+  nav.scrolled {
+    background: rgba(26,18,16,.93);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding-top: 14px; padding-bottom: 14px;
+  }
+  .nav-left { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-center { display: flex; justify-content: center; }
+  .nav-right { display: flex; align-items: center; gap: 20px; justify-content: flex-end; }
+  .nav-logo img {
+    height: 32px; width: auto; object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
+  }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase; color: var(--marfim);
+    transition: color var(--t-base); position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--carmesim);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .38s cubic-bezier(.65,0,.35,1);
+  }
+  .nav-links a:hover { color: var(--carmesim); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .btn-nav {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase; color: var(--marfim);
+    border: 1px solid var(--carmesim); padding: 10px 22px; background: transparent;
+    display: inline-block; position: relative; overflow: hidden;
+    transition: color var(--t-base);
+  }
+  .btn-nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--carmesim);
+    transform: translateY(101%);
+    transition: transform .45s cubic-bezier(.65,0,.35,1);
+    z-index: 0;
+  }
+  .btn-nav:hover::before { transform: translateY(0); }
+  .btn-nav > *, .btn-nav > span { position: relative; z-index: 1; }
+  .btn-nav:hover { color: #fff; }
+  .lang-toggle {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .2em; color: var(--marfim);
+    background: none; border: none; padding: 0;
+    display: flex; align-items: center; gap: 5px;
+    opacity: .5; transition: opacity var(--t-base);
+  }
+  .lang-toggle:hover { opacity: 1; }
+  .lang-sep { opacity: .4; }
+  .lang-pt, .lang-en { transition: color var(--t-base); }
+  html[lang="en"] .lang-en { color: var(--carmesim); }
+  html[lang="pt-BR"] .lang-pt { color: var(--carmesim); }
+  .hamburger { display: none; flex-direction: column; gap: 6px; width: 28px; }
+  .hamburger span { display: block; height: 1px; background: var(--marfim); }
+
+  /* Menu mobile overlay */
+  .mob-menu {
+    position: fixed; inset: 0; background: rgba(26,18,16,.97);
+    z-index: 90; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 40px;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--t-slow);
+  }
+  .mob-menu.open { opacity: 1; pointer-events: auto; }
+  .mob-menu a {
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(28px,8vw,42px); color: var(--marfim);
+    transition: color var(--t-base);
+  }
+  .mob-menu a:hover { color: var(--carmesim); }
+  .mob-close {
+    position: absolute; top: 28px; right: var(--ph-mob);
+    width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  }
+  .mob-close::before, .mob-close::after {
+    content: ''; position: absolute; width: 20px; height: 1px; background: var(--carmesim);
+  }
+  .mob-close::before { transform: rotate(45deg); }
+  .mob-close::after  { transform: rotate(-45deg); }
+
+  /* ─── 05. HERO ─── */
+  #hero {
+    position: relative; height: 100vh; min-height: 640px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-overlay { position: absolute; inset: 0; background: rgba(26,18,16,.80); z-index: 1; }
+
+  .hero-inner {
+    position: relative; z-index: 3;
+    text-align: center; width: 100%; max-width: 860px;
+    padding: 0 var(--ph-mob);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-loc {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--font-corpo); font-size: 9px; font-weight: 700;
+    letter-spacing: .4em; text-transform: uppercase;
+    color: var(--marfim); opacity: .42;
+    margin-bottom: 28px; white-space: nowrap;
+  }
+  .hero-loc-rule { display: block; height: 1px; width: 48px; background: var(--marfim); }
+
+  .hero-logo-wrap { width: clamp(180px,36vw,500px); margin-bottom: 18px; }
+  .hero-logo-wrap img {
+    width: 100%; height: auto; object-fit: contain;
+    filter: brightness(0) invert(1); display: block;
+  }
+  .hero-deco {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .44em; text-transform: uppercase;
+    color: var(--marfim); opacity: .62; margin-bottom: 20px;
+  }
+  .hero-script {
+    font-family: var(--font-script); font-size: clamp(22px,3vw,38px);
+    color: var(--carmesim);
+    display: block; margin-bottom: 28px;
+  }
+  .hero-h1 {
+    font-family: var(--font-display); font-weight: 400; font-style: italic;
+    font-size: clamp(34px,5vw,68px); color: var(--marfim);
+    letter-spacing: .01em; line-height: 1.1; margin-bottom: 18px;
+  }
+  .hero-sub {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: clamp(13px,1.5vw,17px); color: var(--marfim);
+    opacity: .68; letter-spacing: .04em; line-height: 1.85;
+    max-width: 520px; margin: 0 auto 32px;
+  }
+  .btn-ghost {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase; color: var(--marfim);
+    border: 1px solid var(--carmesim); padding: 15px 44px; background: transparent;
+    display: inline-block; position: relative; overflow: hidden;
+    transition: color var(--t-base);
+  }
+  .btn-ghost::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--carmesim);
+    transform: translateY(101%);
+    transition: transform .45s cubic-bezier(.65,0,.35,1);
+    z-index: 0;
+  }
+  .btn-ghost:hover::before { transform: translateY(0); }
+  .btn-ghost > *, .btn-ghost > span { position: relative; z-index: 1; }
+  .btn-ghost:hover { color: #fff; }
+
+  /* Hero bottom bar */
+  .hero-foot {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    padding: 18px var(--ph-desk);
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 16px;
+  }
+  .hero-foot-l {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--marfim); opacity: .32;
+  }
+  .hero-foot-c {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 300;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--marfim); opacity: .32; white-space: nowrap;
+  }
+  .hero-foot-rule { display: block; height: 1px; width: 40px; background: var(--marfim); }
+  .hero-foot-r {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 400;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--marfim); opacity: .32; text-align: right;
+  }
+  @keyframes scrollAnim {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    45%  { transform: scaleY(1); transform-origin: top; }
+    55%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ─── 06. SCROLLTELLING (compartilhado) ─── */
+  .st-wrap { position: relative; height: 400vh; }
+  .st-wrap.st-7 { height: 450vh; }
+
+  /* Reveal animado dos textos dentro de cada cena */
+  @keyframes cenaReveal {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .cena .cena-div { opacity: 0; }
+  .cena .cena-h2  { opacity: 0; }
+  .cena .cena-p   { opacity: 0; }
+  .cena.ativa .cena-div { animation: cenaReveal .65s cubic-bezier(.16,1,.3,1) .20s both; }
+  .cena.ativa .cena-h2  { animation: cenaReveal  .9s cubic-bezier(.16,1,.3,1) .38s both; }
+  .cena.ativa .cena-p   { animation: cenaReveal  .8s cubic-bezier(.16,1,.3,1) .62s both; }
+  .st-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .cena {
+    position: absolute; inset: 0;
+    opacity: 0; pointer-events: none;
+    transition: opacity .9s ease;
+  }
+  .cena.ativa { opacity: 1; pointer-events: auto; }
+  .cena-bg {
+    position: absolute; inset: -5%;
+    background-size: cover; background-position: center;
+    transform: scale(1.05);
+  }
+  .cena-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(26,18,16,.88) 0%, rgba(26,18,16,.30) 50%, rgba(26,18,16,.10) 100%);
+  }
+  .cena-num {
+    position: absolute; top: 48px; right: var(--ph-desk); z-index: 2;
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .4em; text-transform: uppercase; color: var(--carmesim);
+  }
+  .cena-body {
+    position: absolute; bottom: 12vh; left: var(--ph-desk);
+    max-width: 560px; z-index: 2;
+  }
+  .cena-div {
+    width: 56px; height: 1px;
+    background: var(--marfim-escuro); opacity: .4;
+    margin-bottom: 20px;
+  }
+  .cena-h2 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(30px,4vw,52px); color: var(--marfim);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .cena-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: clamp(14px,1.4vw,17px); color: var(--marfim);
+    opacity: .82; line-height: 1.85;
+  }
+
+  /* Scrolltelling II — variações */
+  #st2 .cena-overlay {
+    background: linear-gradient(to top, rgba(26,18,16,.85) 0%, rgba(178,34,34,.06) 55%, rgba(26,18,16,.15) 100%);
+  }
+  #st2 .cena-h2 { font-size: clamp(28px,5vw,64px); }
+  #st2 .cena-p  { font-size: clamp(13px,1.3vw,16px); opacity: .75; }
+  #st2 .pos-c .cena-body { left: 50%; transform: translateX(-50%); text-align: center; bottom: 20vh; max-width: 700px; }
+  #st2 .pos-r .cena-body { left: auto; right: var(--ph-desk); text-align: right; max-width: 560px; }
+  #st2 .pos-l .cena-body { left: var(--ph-desk); text-align: left; }
+
+  /* Scroll hint ST2 — mobile only */
+  .st-scroll-hint {
+    display: none;
+  }
+  @keyframes hintBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: .9; }
+    50%       { transform: translateX(-50%) translateY(7px); opacity: .55; }
+  }
+  @media (max-width: 768px) {
+    .st-scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: absolute;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      pointer-events: none;
+      animation: hintBounce 1.8s ease-in-out infinite;
+      transition: opacity .6s;
+    }
+    .st-scroll-hint.hidden { opacity: 0; }
+    .st-scroll-hint span {
+      font-family: var(--font-corpo);
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--marfim); opacity: .55;
+    }
+    .st-scroll-hint svg {
+      width: 18px; height: 18px;
+      stroke: var(--carmesim); stroke-width: 1.5;
+      fill: none;
+    }
+  }
+
+  /* Indicadores */
+  .prog-lat {
+    position: fixed; right: 36px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    z-index: 50; opacity: 0; transition: opacity var(--t-base); pointer-events: none;
+  }
+  .prog-bot {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 12px;
+    z-index: 50; opacity: 0; transition: opacity var(--t-base); pointer-events: none;
+  }
+  .prog-lat.on, .prog-bot.on { opacity: 1; }
+  .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--marfim); opacity: .25;
+    transition: opacity var(--t-base), transform var(--t-base), background var(--t-base);
+  }
+  .prog-bot .dot { width: 6px; height: 6px; }
+  .dot.on { background: var(--carmesim); opacity: 1; transform: scale(1.3); }
+
+  /* ─── TL. TIMELINE I — A CIDADE ─── */
+  .tl-wrap { background: var(--preto-quente); }
+
+  .tl-hdr {
+    padding: var(--pv-desk) var(--ph-desk) 64px;
+    text-align: center; position: relative;
+  }
+  .tl-hdr::after {
+    content: ''; display: block; width: 1px; height: 52px;
+    background: linear-gradient(to bottom, rgba(178,34,34,.55), transparent);
+    margin: 40px auto 0;
+  }
+  .tl-hdr-eyebrow {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .44em; text-transform: uppercase;
+    color: var(--carmesim); opacity: .6; display: block; margin-bottom: 20px;
+  }
+  .tl-hdr-h {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(34px,5vw,62px); color: var(--marfim);
+    line-height: 1.15; margin-bottom: 18px;
+  }
+  .tl-hdr-h em { font-style: italic; color: var(--carmesim); }
+  .tl-hdr-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: 16px; color: var(--marfim); opacity: .4; letter-spacing: .06em;
+  }
+
+  /* Split grid */
+  .tl-body { display: grid; grid-template-columns: 42vw 1fr; }
+
+  /* Sticky image panel (desktop) */
+  .tl-img-panel {
+    position: sticky; top: 0; height: 100vh;
+    overflow: hidden; align-self: start;
+  }
+  .tl-img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity .9s ease;
+  }
+  .tl-img.ativa { opacity: 1; }
+  .tl-img-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(to right, rgba(26,18,16,.25) 0%, transparent 55%),
+      linear-gradient(to top, rgba(26,18,16,.7) 0%, transparent 55%);
+  }
+  .tl-img-grain {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  .tl-img-badge {
+    position: absolute; bottom: 36px; left: 36px; z-index: 3;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .tl-img-badge-num {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(178,34,34,.6); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .12em; color: var(--carmesim);
+  }
+  .tl-img-badge-year {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 18px; color: var(--marfim); opacity: .5;
+  }
+  .tl-dots {
+    position: absolute; right: 22px; top: 50%;
+    transform: translateY(-50%); z-index: 3;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .tl-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--marfim); opacity: .2;
+    transition: opacity .3s ease, transform .3s ease, background .3s ease;
+  }
+  .tl-dot.ativa { background: var(--carmesim); opacity: 1; transform: scale(1.4); }
+
+  /* Chapters panel */
+  .tl-chapters { position: relative; padding-left: 2px; }
+  .tl-spine {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(178,34,34,.2) 5%,
+      rgba(178,34,34,.2) 95%,
+      transparent 100%
+    );
+  }
+
+  /* Individual chapter */
+  .tl-cap {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 56px 80px 52px;
+    position: relative;
+  }
+  .tl-spine-dot {
+    position: absolute; left: -5px; top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--carmesim);
+    box-shadow: 0 0 0 5px rgba(178,34,34,.14), 0 0 18px 6px rgba(178,34,34,.1);
+    transition: transform .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  .tl-cap.ativa .tl-spine-dot { transform: translateY(-50%) scale(1); }
+
+  .tl-cap-mob-img { display: none; }
+
+  .tl-cap-ghost {
+    position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display); font-weight: 700; font-style: italic;
+    font-size: clamp(68px,10vw,144px);
+    color: var(--marfim); opacity: 0; line-height: 1;
+    pointer-events: none; user-select: none; letter-spacing: -.02em;
+    transition: opacity .75s ease;
+  }
+  .tl-cap.ativa .tl-cap-ghost { opacity: .038; }
+
+  .tl-cap-num {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .4em; text-transform: uppercase; color: var(--carmesim);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+    opacity: 0; transform: translateX(-14px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .tl-cap-num::before {
+    content: ''; display: block; width: 26px; height: 1px;
+    background: var(--carmesim); opacity: .5; flex-shrink: 0;
+  }
+  .tl-cap.ativa .tl-cap-num { opacity: .7; transform: translateX(0); }
+
+  .tl-cap-year {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 300;
+    letter-spacing: .24em; color: var(--marfim);
+    margin-bottom: 24px;
+    opacity: 0; transition: opacity .6s ease .08s;
+  }
+  .tl-cap.ativa .tl-cap-year { opacity: .3; }
+
+  .tl-cap-h2 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(24px,3vw,42px); color: var(--marfim);
+    line-height: 1.2; margin-bottom: 22px; max-width: 500px;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .7s ease .14s, transform .7s ease .14s;
+  }
+  .tl-cap.ativa .tl-cap-h2 { opacity: 1; transform: translateY(0); }
+
+  .tl-cap-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: clamp(14px,1.3vw,16px); color: var(--marfim);
+    line-height: 1.95; max-width: 440px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity .7s ease .24s, transform .7s ease .24s;
+  }
+  .tl-cap.ativa .tl-cap-p { opacity: .7; transform: translateY(0); }
+
+  /* ─── 07. RESTAURANTE ─── */
+  #restaurante {
+    background: var(--marfim); display: flex; align-items: stretch;
+    min-height: 80vh;
+  }
+  .rest-txt {
+    flex: 0 0 55%; padding: var(--pv-desk) var(--ph-desk);
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .rest-water {
+    position: absolute; bottom: -40px; right: -10px;
+    font-family: var(--font-display);
+    font-size: clamp(100px,18vw,220px);
+    color: var(--carmesim); opacity: .04;
+    line-height: 1; z-index: 0; pointer-events: none; user-select: none;
+  }
+  .rest-txt > *:not(.rest-water) { position: relative; z-index: 1; }
+  .rest-tag {
+    font-family: var(--font-script); font-size: clamp(18px,2.5vw,28px);
+    color: var(--carmesim); opacity: .6; display: block; margin-bottom: 12px;
+  }
+  .rest-line { width: 56px; height: 1px; background: var(--carmesim); margin: 16px 0 24px; }
+  .rest-h2 {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(36px,5vw,64px); color: var(--carmesim);
+    line-height: 1.1; margin-bottom: 32px;
+  }
+  .rest-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: 17px; color: var(--carvao);
+    line-height: 1.95; max-width: 480px;
+  }
+  .rest-p + .rest-p { margin-top: 20px; }
+  .rest-foto {
+    flex: 0 0 45%; position: relative; overflow: hidden;
+  }
+  .rest-foto img { position: absolute; inset: 0; transition: transform .8s ease; }
+  .rest-foto:hover img { transform: scale(1.03); }
+
+  /* ─── 08. CHEF ─── */
+  #chef {
+    background: var(--preto-quente);
+    padding: var(--pv-desk) var(--ph-desk);
+    display: flex; align-items: center; min-height: 80vh;
+  }
+  .chef-foto { flex: 0 0 46%; position: relative; overflow: hidden; }
+  .chef-foto img {
+    width: 100%; min-height: 580px;
+    object-fit: cover; object-position: center top; display: block;
+  }
+  .chef-sep {
+    width: 1px; align-self: stretch; margin: 0 64px;
+    background: var(--carmesim); opacity: .35;
+    flex-shrink: 0;
+  }
+  .chef-txt { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .chef-lbl {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .35em; text-transform: uppercase;
+    color: var(--carmesim); opacity: .7; display: block; margin-bottom: 16px;
+  }
+  .chef-nome {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(34px,4.5vw,60px); color: var(--marfim);
+    line-height: 1.1; margin-bottom: 10px;
+  }
+  .chef-script {
+    font-family: var(--font-script); font-size: clamp(18px,2.5vw,28px);
+    color: var(--carmesim); opacity: .65; display: block; margin-bottom: 28px;
+  }
+  .chef-h3 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(18px,2.2vw,26px); color: var(--marfim);
+    line-height: 1.35; margin-bottom: 24px;
+  }
+  .chef-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: 16px; color: var(--marfim);
+    opacity: .82; line-height: 1.9; max-width: 420px;
+  }
+
+  /* ─── 09. ESPAÇO ─── */
+  #espaco { background: var(--carmesim); }
+  .espaco-top {
+    text-align: center;
+    padding: var(--pv-desk) var(--ph-desk) 56px;
+  }
+  .espaco-h2 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(36px,5vw,64px); color: var(--marfim);
+    line-height: 1.1; margin-bottom: 24px;
+  }
+  .espaco-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: 16px; color: var(--marfim);
+    opacity: .88; max-width: 520px; line-height: 1.9; margin: 0 auto;
+  }
+  .espaco-p + .espaco-p { margin-top: 16px; }
+
+  /* Galeria horizontal scroll-driven */
+  .galeria-wrap { position: relative; height: 520vh; }
+  .galeria-sticky {
+    position: sticky; top: 0; height: 100vh;
+    overflow: hidden;
+    background: var(--carmesim);
+  }
+
+  /* Barra de progresso */
+  .galeria-barra {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: rgba(255,237,206,.18); z-index: 20;
+  }
+  .galeria-fill {
+    height: 100%; background: var(--marfim); width: 0%;
+    transition: width .08s linear;
+  }
+
+  /* Contador editorial */
+  .galeria-counter {
+    position: absolute; top: 20px; right: 36px; z-index: 20;
+    font-family: var(--font-corpo); font-size: 9px; font-weight: 700;
+    letter-spacing: .32em; color: var(--marfim); opacity: .5;
+    display: flex; align-items: baseline; gap: 5px;
+  }
+  .galeria-sep { opacity: .4; }
+
+  /* Grade bento 2 linhas */
+  .galeria-track {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 3px;
+    height: 100vh;
+    will-change: transform;
+  }
+
+  /* Frame individual */
+  .galeria-foto {
+    position: relative; overflow: hidden;
+    cursor: none;
+  }
+  .galeria-foto.tall { grid-row: span 2; }
+
+  .galeria-foto img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: scale(1.06);
+    transition: transform .7s cubic-bezier(.25,.46,.45,.94);
+  }
+  .galeria-foto:hover img { transform: scale(1.0); }
+
+  /* Numeral romano fantasma */
+  .galeria-ghost {
+    position: absolute; bottom: -8px; right: 8px;
+    font-family: var(--font-display); font-style: italic;
+    font-weight: 300; font-size: clamp(48px,7vw,88px);
+    line-height: 1; color: var(--marfim); opacity: .07;
+    pointer-events: none; z-index: 2; user-select: none;
+  }
+
+  /* Legenda ao hover */
+  .galeria-legenda {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 16px 14px;
+    background: linear-gradient(to top, rgba(26,18,16,.85), transparent);
+    z-index: 3; opacity: 0; transform: translateY(6px);
+    transition: opacity .4s, transform .4s;
+  }
+  .galeria-foto:hover .galeria-legenda { opacity: 1; transform: translateY(0); }
+  .galeria-legenda span {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 12px; color: var(--marfim); opacity: .82;
+  }
+
+  /* Foto box legacy — mantido para cursor JS */
+  .foto-box { overflow: hidden; position: relative; }
+
+  /* ─── 10. INAUGURAÇÃO ─── */
+  #inauguracao {
+    background: var(--preto-quente);
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: var(--pv-desk) var(--ph-desk);
+    position: relative; overflow: hidden;
+  }
+  #inauguracao::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    opacity: .12; z-index: 0;
+  }
+  .inau-bg { position: absolute; inset: 0; z-index: 0; }
+  .inau-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .12; }
+  .inau-inner { position: relative; z-index: 1; max-width: 640px; }
+  .inau-orn { width: 80px; height: 1px; background: var(--oliveira); opacity: .5; margin: 0 auto 44px; }
+  .inau-h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(48px,8vw,100px); color: var(--marfim);
+    line-height: 1.0; letter-spacing: -.01em; margin-bottom: 0;
+  }
+  .inau-h2-sub {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px,4vw,52px); color: var(--marfim);
+    line-height: 1.2; margin-bottom: 20px;
+  }
+  .inau-script {
+    font-family: var(--font-script); font-size: clamp(20px,3vw,36px);
+    color: var(--carmesim); opacity: .75; display: block; margin-bottom: 36px;
+  }
+  .inau-p {
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: clamp(15px,1.6vw,18px); color: var(--marfim);
+    opacity: .82; max-width: 500px; line-height: 1.85; margin: 0 auto;
+  }
+  .inau-p + .inau-p { margin-top: 18px; }
+  .dest { color: var(--oliveira); }
+  .btn-solid {
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase;
+    color: var(--preto-quente); background: var(--marfim);
+    border: 1px solid var(--marfim); padding: 17px 52px;
+    display: inline-block; margin-top: 48px;
+    position: relative; overflow: hidden;
+    transition: color var(--t-base);
+  }
+  .btn-solid::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--carmesim);
+    transform: translateY(101%);
+    transition: transform .45s cubic-bezier(.65,0,.35,1);
+    z-index: 0;
+  }
+  .btn-solid:hover::before { transform: translateY(0); }
+  .btn-solid > *, .btn-solid > span { position: relative; z-index: 1; }
+  .btn-solid:hover { color: #fff; border-color: var(--carmesim); }
+  .micro {
+    font-family: var(--font-corpo); font-style: italic; font-size: 12px;
+    color: var(--marfim); opacity: .45; margin-top: 16px; display: block;
+  }
+
+  /* ─── 11. RODAPÉ ─── */
+  footer {
+    background: var(--carvao);
+    padding: 80px var(--ph-desk) 48px;
+    text-align: center; position: relative;
+  }
+  footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: var(--carmesim); opacity: .3;
+  }
+  .rod-logo img {
+    height: 46px; width: auto; object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin: 0 auto 20px; display: block;
+  }
+  .rod-script {
+    font-family: var(--font-script); font-size: 22px;
+    color: var(--carmesim); opacity: .6; display: block; margin-bottom: 32px;
+  }
+  .rod-h2 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(22px,3vw,32px); color: var(--marfim); margin-bottom: 16px;
+  }
+  .rod-p {
+    font-family: var(--font-corpo); font-weight: 300; font-size: 14px;
+    color: var(--marfim); opacity: .6; max-width: 440px;
+    line-height: 1.8; margin: 0 auto 40px;
+  }
+  .rod-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px; margin: 40px 0 36px; flex-wrap: wrap; list-style: none;
+  }
+  .rod-nav a {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase;
+    color: var(--marfim); opacity: .5;
+    transition: opacity var(--t-base), color var(--t-base);
+  }
+  .rod-nav a:hover { opacity: 1; color: var(--carmesim); }
+  .rod-sep { color: var(--carmesim); opacity: .6; }
+  .rod-copy {
+    font-family: var(--font-corpo); font-size: 10px;
+    color: var(--marfim); opacity: .22; letter-spacing: .1em;
+    margin-top: 32px;
+  }
+
+  /* ─── 12. MODAL ─── */
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(26,18,16,.94);
+    z-index: 200; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--t-slow);
+  }
+  .modal-bg.open { opacity: 1; pointer-events: auto; }
+  .modal-box {
+    background: var(--marfim); max-width: 460px; width: 90%;
+    padding: 56px 48px; position: relative;
+    transform: translateY(20px);
+    transition: transform var(--t-slow);
+  }
+  .modal-bg.open .modal-box { transform: translateY(0); }
+  .modal-box::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--carmesim);
+  }
+  .modal-x {
+    position: absolute; top: 20px; right: 20px;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-x::before, .modal-x::after {
+    content: ''; position: absolute; width: 18px; height: 1px; background: var(--carmesim);
+  }
+  .modal-x::before { transform: rotate(45deg); }
+  .modal-x::after  { transform: rotate(-45deg); }
+  .modal-h3 {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: 28px; color: var(--carmesim); margin-bottom: 6px;
+  }
+  .modal-sub {
+    font-family: var(--font-corpo); font-size: 12px;
+    color: var(--carvao); opacity: .6; margin-bottom: 36px; letter-spacing: .04em;
+  }
+  .f-grp { margin-bottom: 28px; }
+  .f-lbl {
+    font-family: var(--font-corpo); font-size: 10px; font-weight: 700;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--carmesim); display: block; margin-bottom: 8px;
+  }
+  .f-inp {
+    width: 100%; border: none; border-bottom: 1px solid var(--carmesim);
+    border-radius: 0; background: transparent;
+    font-family: var(--font-corpo); font-weight: 300;
+    font-size: 15px; color: var(--carvao);
+    padding: 8px 0 10px; outline: none;
+    transition: border-color var(--t-base);
+    -webkit-appearance: none;
+  }
+  .f-inp:focus { border-bottom-color: var(--carvao); }
+  .f-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .modal-btn {
+    width: 100%; padding: 16px; margin-top: 8px;
+    background: var(--carmesim); color: var(--marfim);
+    font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase;
+    border: none;
+    position: relative; overflow: hidden;
+    transition: color var(--t-base);
+  }
+  .modal-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--carmesim-escuro);
+    transform: translateY(101%);
+    transition: transform .45s cubic-bezier(.65,0,.35,1);
+    z-index: 0;
+  }
+  .modal-btn:hover::before { transform: translateY(0); }
+  .modal-ok { display: none; text-align: center; padding: 20px 0; }
+  .modal-ok.show { display: block; }
+  .modal-ok-h {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 26px; color: var(--carmesim); line-height: 1.3; margin-bottom: 12px;
+  }
+  .modal-ok-p {
+    font-family: var(--font-corpo); font-size: 13px;
+    color: var(--carvao); opacity: .7; line-height: 1.7;
+  }
+
+  /* ─── 13. ANIMAÇÕES DE ENTRADA ─── */
+  .ae {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .ae.in { opacity: 1; transform: translateY(0); }
+
+  /* ─── 14. MOBILE ─── */
+  @media (hover: none) {
+    body { cursor: auto; }
+    * { cursor: auto; }
+    .cursor-ponto, .cursor-anel { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { grid-template-columns: 1fr auto; padding: 18px var(--ph-mob); }
+    .nav-left  { display: none; }
+    .nav-right { display: none; }
+    .nav-center { grid-column: 1; justify-content: flex-start; }
+    .hamburger { display: flex; grid-column: 2; }
+    .nav-logo img { height: 28px; }
+
+    #hero .hero-inner { padding: 0 20px; }
+    .hero-loc { display: none; }
+    .hero-foot { padding: 14px var(--ph-mob); }
+    .hero-foot-l, .hero-foot-r { display: none; }
+    .hero-foot { grid-template-columns: 1fr; }
+    .hero-foot-c { justify-content: center; }
+
+    #restaurante { flex-direction: column; min-height: auto; }
+    .rest-foto { flex: none; width: 100%; height: 280px; order: -1; }
+    .rest-foto img { position: static; width: 100%; height: 280px; }
+    .rest-txt { flex: none; width: 100%; padding: var(--pv-mob) var(--ph-mob); }
+
+    #chef { flex-direction: column; padding: var(--pv-mob) var(--ph-mob); }
+    .chef-foto { flex: none; width: 100%; margin-bottom: 44px; }
+    .chef-foto img { min-height: 320px; }
+    .chef-sep { display: none; }
+    .chef-txt { flex: none; width: 100%; }
+    .chef-p { max-width: 100%; }
+
+    .espaco-top { padding: var(--pv-mob) var(--ph-mob) 40px; }
+    .galeria-wrap { height: auto; }
+    .galeria-sticky {
+      position: relative; height: 65vw;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .galeria-track {
+      transform: none !important;
+      grid-template-rows: 1fr 1fr;
+      grid-auto-flow: column;
+      height: 65vw;
+    }
+    .galeria-foto        { width: 52vw !important; }
+    .galeria-foto.tall   { width: 38vw !important; scroll-snap-align: start; }
+    .galeria-barra, .galeria-counter { display: none; }
+
+    /* Timeline I — mobile */
+    .tl-body { grid-template-columns: 1fr; }
+    .tl-img-panel { display: none; }
+    .tl-cap-mob-img {
+      display: block; width: calc(100% + 48px); margin-left: -24px;
+      height: 56vw; min-height: 220px;
+      background-size: cover; background-position: center;
+      position: relative; margin-bottom: 28px;
+    }
+    .tl-cap-mob-img::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 64px;
+      background: linear-gradient(to top, var(--preto-quente), transparent);
+    }
+    .tl-cap { min-height: auto; padding: 32px 24px 56px 28px; }
+    .tl-cap-ghost { font-size: clamp(56px,18vw,96px); right: 8px; }
+    .tl-hdr { padding: var(--pv-mob) var(--ph-mob) 40px; }
+
+    .cena-body { left: var(--ph-mob); right: var(--ph-mob); max-width: 100%; }
+    .cena-num  { right: var(--ph-mob); }
+    #st2 .pos-c .cena-body { left: var(--ph-mob); right: var(--ph-mob); transform: none; }
+    #st2 .pos-r .cena-body { left: var(--ph-mob); right: var(--ph-mob); text-align: left; }
+    .prog-lat { right: 16px; }
+
+    #inauguracao { padding: var(--pv-mob) var(--ph-mob); }
+    .btn-ghost, .btn-solid { width: 100%; text-align: center; padding: 18px 24px; }
+    footer { padding: 56px var(--ph-mob) 40px; }
+    .modal-box { padding: 40px 24px; }
+    .f-duo { grid-template-columns: 1fr; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-ponto" id="cp"></div>
+<div class="cursor-anel"  id="ca"></div>
+
+<!-- INDICADORES ST2 -->
+<div class="prog-bot" id="prog2">
+  <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<!-- MENU MOBILE -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose" aria-label="Fechar menu"></button>
+  <a href="#st1"         onclick="closeMob()" class="i18n" data-pt="A Cidade"  data-en="The City">A Cidade</a>
+  <a href="#restaurante" onclick="closeMob()" class="i18n" data-pt="A Casa"    data-en="The House">A Casa</a>
+  <a href="#chef"        onclick="closeMob()" class="i18n" data-pt="O Chef"    data-en="The Chef">O Chef</a>
+  <a href="#espaco"      onclick="closeMob()" class="i18n" data-pt="O Espaço"  data-en="The Space">O Espaço</a>
+  <a href="#" onclick="closeMob();openModal();return false;" class="i18n" data-pt="Reservar" data-en="Reserve">Reservar</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <ul class="nav-left nav-links">
+    <li><a href="#st1"         class="i18n" data-pt="A Cidade"  data-en="The City">A Cidade</a></li>
+    <li><a href="#restaurante" class="i18n" data-pt="A Casa"    data-en="The House">A Casa</a></li>
+    <li><a href="#chef"        class="i18n" data-pt="O Chef"    data-en="The Chef">O Chef</a></li>
+    <li><a href="#espaco"      class="i18n" data-pt="O Espaço"  data-en="The Space">O Espaço</a></li>
+  </ul>
+  <div class="nav-center">
+    <div class="nav-logo">
+      <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC Dezenove34 — Massa I Carni">
+    </div>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="langBtn" aria-label="Alternar idioma">
+      <span class="lang-pt">PT</span>
+      <span class="lang-sep">·</span>
+      <span class="lang-en">EN</span>
+    </button>
+    <a href="#" class="btn-nav i18n" data-pt="Reservar Mesa" data-en="Reserve Table" onclick="openModal();return false;"><span>Reservar Mesa</span></a>
+  </div>
+  <button class="hamburger" id="hambBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ S1 HERO ══ -->
+<section id="hero">
+  <div class="hero-bg">
+    <!-- IMAGEM: Fachada noturna / ambiente do MC Dezenove34 — pedra, metal, luzes aquecidas -->
+    <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.jpg" alt="MC Dezenove34 — Campos do Jordão">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-loc ae">
+      <span class="hero-loc-rule"></span>
+      <span>CAMPOS DO JORDÃO · SERRA DA MANTIQUEIRA</span>
+      <span class="hero-loc-rule"></span>
+    </div>
+    <div class="hero-logo-wrap ae" style="transition-delay:.08s">
+      <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC 1934 — Massa I Carni">
+    </div>
+    <div class="hero-deco ae" style="transition-delay:.14s">MASSA ! CARNi</div>
+    <span class="hero-script ae" style="transition-delay:.22s">Il ristorante in Capivari.</span>
+    <h1 class="hero-h1 ae" style="transition-delay:.30s">
+      <span class="i18n" data-pt="Massa, Carne &amp; Memória." data-en="Pasta, Meat &amp; Memory.">Massa, Carne &amp; Memória.</span>
+    </h1>
+    <p class="hero-sub ae" style="transition-delay:.38s">
+      <span class="i18n"
+        data-pt="Em junho de 2026, a montanha mais antiga do Brasil ganha uma nova mesa. Honrando 150 anos de história — com gastronomia à sua altura."
+        data-en="In June 2026, Brazil's oldest mountain welcomes a new table. Honoring 150 years of history — with gastronomy to match.">Em junho de 2026, a montanha mais antiga do Brasil ganha uma nova mesa. Honrando 150 anos de história — com gastronomia à sua altura.</span>
+    </p>
+    <a href="#" class="btn-ghost ae" style="transition-delay:.46s" onclick="openModal();return false;">
+      <span class="i18n" data-pt="PRÉ-RESERVA · INAUGURAÇÃO" data-en="PRE-BOOKING · OPENING">PRÉ-RESERVA · INAUGURAÇÃO</span>
+    </a>
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="hero-foot" aria-hidden="true">
+    <span class="hero-foot-l">est. MMXXVI · 1.628 m</span>
+    <div class="hero-foot-c">
+      <span class="hero-foot-rule"></span>
+      <span class="i18n" data-pt="Desça com calma" data-en="Take your time">Desça com calma</span>
+      <span class="hero-foot-rule"></span>
+    </div>
+    <span class="hero-foot-r">Massa · Carne · Memória</span>
+  </div>
+</section>
+
+<!-- ══ S2 TIMELINE I — A Cidade ══ -->
+<section id="st1" class="tl-wrap">
+
+  <div class="tl-hdr">
+    <span class="tl-hdr-eyebrow">A Cidade · A História</span>
+    <h2 class="tl-hdr-h ae">Antes do MC 1934,<br><em>havia Campos do Jordão.</em></h2>
+    <p class="tl-hdr-p ae" style="transition-delay:.12s">Uma cidade que não foi construída. Foi sentida.</p>
+  </div>
+
+  <div class="tl-body">
+
+    <!-- Painel de imagem sticky (desktop) -->
+    <div class="tl-img-panel">
+      <div class="tl-img ativa" data-ti="0" style="background-image:url('assets/imgs/pexels-max-griss-16866522-14316295.jpg')"></div>
+      <div class="tl-img"        data-ti="1" style="background-image:url('assets/imgs/pexels-kathrinepnw-15945555.jpg')"></div>
+      <div class="tl-img"        data-ti="2" style="background-image:url('assets/imgs/pexels-justus-menke-3490295-5213972.jpg')"></div>
+      <div class="tl-img"        data-ti="3" style="background-image:url('assets/imgs/pexels-marlein-16021237.jpg')"></div>
+      <div class="tl-img"        data-ti="4" style="background-image:url('assets/imgs/pexels-ahmad-salisu-jaafar-219868809-34382330.jpg')"></div>
+      <div class="tl-img"        data-ti="5" style="background-image:url('assets/imgs/pexels-thomas-wannmacher-2160752874-36970225.jpg')"></div>
+      <div class="tl-img-overlay"></div>
+      <div class="tl-img-grain"  aria-hidden="true"></div>
+      <div class="tl-img-badge">
+        <div class="tl-img-badge-num" id="tl-badge-num">I</div>
+        <span class="tl-img-badge-year" id="tl-badge-year">Serra da Mantiqueira</span>
+      </div>
+      <div class="tl-dots" aria-hidden="true">
+        <div class="tl-dot ativa"></div><div class="tl-dot"></div>
+        <div class="tl-dot"></div><div class="tl-dot"></div>
+        <div class="tl-dot"></div><div class="tl-dot"></div>
+      </div>
+    </div>
+
+    <!-- Capítulos com scroll -->
+    <div class="tl-chapters">
+      <div class="tl-spine"></div>
+
+      <div class="tl-cap ativa" data-ti="0">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-max-griss-16866522-14316295.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">I</span>
+        <span class="tl-cap-num">Capítulo I</span>
+        <span class="tl-cap-year">Serra da Mantiqueira</span>
+        <h2 class="tl-cap-h2">Antes de qualquer nome, havia a montanha.</h2>
+        <p class="tl-cap-p">A Serra da Mantiqueira, a mais de 1.600 metros, com suas araucárias, sua névoa e o silêncio de quem não precisa se justificar. Campos do Jordão não foi descoberta. Foi sentida.</p>
+      </div>
+
+      <div class="tl-cap" data-ti="1">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-kathrinepnw-15945555.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">II</span>
+        <span class="tl-cap-num">Capítulo II</span>
+        <span class="tl-cap-year">Séc. XIX</span>
+        <h2 class="tl-cap-h2">No final do século XIX, os primeiros chegaram em lombo de burro.</h2>
+        <p class="tl-cap-p">Médicos, viajantes, famílias inteiras subindo a serra em busca de algo que a cidade grande não tinha — ar puro, tempo e cura. Campos do Jordão tornou-se o lugar onde o Brasil vinha se recuperar.</p>
+      </div>
+
+      <div class="tl-cap" data-ti="2">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-justus-menke-3490295-5213972.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">1914</span>
+        <span class="tl-cap-num">Capítulo III</span>
+        <span class="tl-cap-year">1914</span>
+        <h2 class="tl-cap-h2">A ferrovia chegou em 1914 e mudou tudo.</h2>
+        <p class="tl-cap-p">A locomotiva "Catarina" rasgou a Mantiqueira e trouxe o mundo até aqui. Com ela vieram artistas, intelectuais, presidentes. A cidade que curava passou a encantar.</p>
+      </div>
+
+      <div class="tl-cap" data-ti="3">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-marlein-16021237.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">arte</span>
+        <span class="tl-cap-num">Capítulo IV</span>
+        <span class="tl-cap-year">Séc. XX</span>
+        <h2 class="tl-cap-h2">Pintores vieram e não conseguiram ir embora.</h2>
+        <p class="tl-cap-p">Lasar Segall, Paulo Gagarin, Lila Egydio Martins — cada um deixou um pedaço de sua alma nessas paisagens. Campos do Jordão não inspira. Ela transforma.</p>
+      </div>
+
+      <div class="tl-cap" data-ti="4">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-ahmad-salisu-jaafar-219868809-34382330.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">1940</span>
+        <span class="tl-cap-num">Capítulo V</span>
+        <span class="tl-cap-year">1940</span>
+        <h2 class="tl-cap-h2">Em 1940, um homem de 51 anos escalou a Pedra do Baú com as próprias mãos.</h2>
+        <p class="tl-cap-p">Seiscentos degraus cravados na rocha viva. No topo, ele proclamou a vitória do espírito sobre a matéria. Em Campos do Jordão, a altitude nunca foi obstáculo. Sempre foi convite.</p>
+      </div>
+
+      <div class="tl-cap" data-ti="5">
+        <div class="tl-spine-dot"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-thomas-wannmacher-2160752874-36970225.jpg')"></div>
+        <span class="tl-cap-ghost" aria-hidden="true">1934</span>
+        <span class="tl-cap-num">Capítulo VI</span>
+        <span class="tl-cap-year">1934 · 2026</span>
+        <h2 class="tl-cap-h2">Toda grande história precisa de uma boa mesa.</h2>
+        <p class="tl-cap-p">Em 1934, Campos do Jordão já era o endereço mais desejado do Brasil. Hoje, o MC 1934 nasce para honrar essa herança — com gastronomia, memória e a convicção de que uma refeição extraordinária também faz parte da história de um lugar.</p>
+      </div>
+
+    </div><!-- .tl-chapters -->
+  </div><!-- .tl-body -->
+</section>
+
+<!-- ══ S3 O RESTAURANTE ══ -->
+<section id="restaurante">
+  <div class="rest-txt">
+    <span class="rest-tag ae">Campos do Jordão</span>
+    <div class="rest-line ae" style="transition-delay:.08s"></div>
+    <h2 class="rest-h2 ae" style="transition-delay:.15s">
+      Não é só um restaurante. É uma declaração de amor à cidade.
+    </h2>
+    <p class="rest-p ae" style="transition-delay:.22s">O MC 1934 foi criado por quem cresceu olhando para essa montanha e decidiu que ela merecia uma gastronomia à sua altura.</p>
+    <p class="rest-p ae" style="transition-delay:.28s">Culinária italiana encontra Campos do Jordão. Massas, carnes e ingredientes escolhidos com obsessão — tudo preparado com a precisão de quem respeita a tradição e a ousadia de quem não tem medo de ir além.</p>
+    <p class="rest-p ae" style="transition-delay:.34s">Cada prato tem uma razão de existir. Cada detalhe do espaço foi pensado para que você não queira ir embora.</p>
+    <div class="rest-water" aria-hidden="true">1934</div>
+  </div>
+  <div class="rest-foto ae" style="transition-delay:.2s">
+    <!-- IMAGEM: Interior do restaurante — ambiente noturno, mesas, iluminação quente -->
+    <img src="assets/imgs/pexels-jonathanborba-28559497.jpg" alt="Interior do MC Dezenove34">
+  </div>
+</section>
+
+<!-- ══ S4 ANDRÉ BOCCATO ══ -->
+<section id="chef">
+  <div class="chef-foto ae">
+    <!-- IMAGEM: André Boccato — foto editorial em P&B ou tratamento de cor quente -->
+    <img src="assets/imgs/chef-pouring-seasoning-beef-stake-plate.jpg" alt="Chef André Boccato">
+  </div>
+  <div class="chef-sep"></div>
+  <div class="chef-txt">
+    <span class="chef-lbl ae">Chef Executivo</span>
+    <h2 class="chef-nome ae" style="transition-delay:.1s">André Boccato</h2>
+    <span class="chef-script ae" style="transition-delay:.16s">la cucina italiana</span>
+    <h3 class="chef-h3 ae" style="transition-delay:.22s">A assinatura de quem entende que cozinhar é um ato de memória.</h3>
+    <p class="chef-p ae" style="transition-delay:.3s">
+      André Boccato traz para o MC 1934 uma culinária que conecta a Itália, o Brasil e Campos do Jordão em uma só experiência. Um menu construído para surpreender — mas com a familiaridade de quem parece que já esteve aqui antes.
+    </p>
+  </div>
+</section>
+
+<!-- ══ S5 O ESPAÇO ══ -->
+<section id="espaco">
+  <div class="espaco-top">
+    <h2 class="espaco-h2 ae">Um espaço feito para durar na memória.</h2>
+    <p class="espaco-p ae" style="transition-delay:.12s">Mesas espaçosas. Sofás. Privacidade. Uma oliveira centenária que chegou para ficar. E um segundo andar — o Rooftop Ibiri — com uma vista que faz qualquer conversa parecer mais importante.</p>
+    <p class="espaco-p ae" style="transition-delay:.2s">O MC 1934 não é um lugar para passar. É um lugar para estar.</p>
+  </div>
+
+  <!-- GALERIA HORIZONTAL SCROLL-DRIVEN -->
+  <div class="galeria-wrap" id="galeriaWrap">
+    <div class="galeria-sticky">
+
+      <!-- Barra de progresso -->
+      <div class="galeria-barra"><div class="galeria-fill" id="galeriaFill"></div></div>
+
+      <!-- Contador -->
+      <div class="galeria-counter">
+        <span id="galeriaCur">01</span>
+        <span class="galeria-sep">/</span>
+        <span>08</span>
+      </div>
+
+      <!-- Bento grid 2 linhas -->
+      <div class="galeria-track" id="galeriaTrack">
+
+        <!-- COL 1 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:32vw">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.jpg" alt="Luz de tarde — MC 1934">
+          <span class="galeria-ghost">I</span>
+          <div class="galeria-legenda"><span>Luz de tarde</span></div>
+        </div>
+
+        <!-- COL 2 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:44vw">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-34434635.jpg" alt="Mesas e detalhes — MC 1934">
+          <span class="galeria-ghost">II</span>
+          <div class="galeria-legenda"><span>Mesas e detalhes</span></div>
+        </div>
+        <div class="galeria-foto" style="width:44vw">
+          <img src="assets/imgs/pexels-jonathanborba-28559497.jpg" alt="À mesa — MC 1934">
+          <span class="galeria-ghost">III</span>
+          <div class="galeria-legenda"><span>À mesa</span></div>
+        </div>
+
+        <!-- COL 3 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:26vw">
+          <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.jpg" alt="O prato — MC 1934">
+          <span class="galeria-ghost">IV</span>
+          <div class="galeria-legenda"><span>O prato</span></div>
+        </div>
+
+        <!-- COL 4 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:38vw">
+          <img src="assets/imgs/pexels-nano-erdozain-120534369-29039073.jpg" alt="O vinho — MC 1934">
+          <span class="galeria-ghost">V</span>
+          <div class="galeria-legenda"><span>O vinho</span></div>
+        </div>
+        <div class="galeria-foto" style="width:38vw">
+          <img src="assets/imgs/pexels-valeriya-19503822.jpg" alt="O detalhe — MC 1934">
+          <span class="galeria-ghost">VI</span>
+          <div class="galeria-legenda"><span>O detalhe</span></div>
+        </div>
+
+        <!-- COL 5 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:30vw">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-28996262.jpg" alt="A oliveira centenária — MC 1934">
+          <span class="galeria-ghost">VII</span>
+          <div class="galeria-legenda"><span>A oliveira centenária</span></div>
+        </div>
+
+        <!-- COL 6 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:40vw">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-35870358.jpg" alt="Rooftop Ibiri — MC 1934">
+          <span class="galeria-ghost">VIII</span>
+          <div class="galeria-legenda"><span>Rooftop Ibiri</span></div>
+        </div>
+
+      </div><!-- /galeria-track -->
+    </div><!-- /galeria-sticky -->
+  </div><!-- /galeria-wrap -->
+</section>
+
+<!-- ══ S6 SCROLLTELLING II — O Que Você Vai Sentir ══ -->
+<div id="st2" class="st-wrap st-7">
+  <div class="st-sticky">
+
+    <!-- SCROLL HINT — mobile -->
+    <div class="st-scroll-hint" id="st2Hint" aria-hidden="true">
+      <span>role</span>
+      <svg viewBox="0 0 18 18"><polyline points="3,6 9,12 15,6"/></svg>
+    </div>
+
+    <!-- CENA 1 -->
+    <div class="cena ativa pos-c" data-i="0">
+      <div class="cena-bg" style="background-image:url('assets/imgs/beautifully-plated-pasta-dish-being-enjoyed-cozy-dining-setting-with-warm-lighting.jpg')">
+        <!-- IMAGEM: Ambiente acolhedor do restaurante — mesas, velas, entrada -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">O momento em que você entra e entende que esse lugar foi pensado para você.</h2>
+      </div>
+    </div>
+
+    <!-- CENA 2 -->
+    <div class="cena pos-c" data-i="1">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-28503618.jpg')">
+        <!-- IMAGEM: Cozinha em ação — vapor, cozinheiros, calor -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">O aroma da cozinha antes mesmo de sentar.</h2>
+      </div>
+    </div>
+
+    <!-- CENA 3 -->
+    <div class="cena pos-l" data-i="2">
+      <div class="cena-bg" style="background-image:url('assets/imgs/high-angle-carbonara-pasta-wooden-table.jpg')">
+        <!-- IMAGEM: Prato em close — massa fresca com molho, feita à mão -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">Uma massa que leva três dias para ser feita.</h2>
+        <p class="cena-p">Você vai saber na primeira garfada.</p>
+      </div>
+    </div>
+
+    <!-- CENA 4 -->
+    <div class="cena pos-l" data-i="3">
+      <div class="cena-bg" style="background-image:url('assets/imgs/tenderloin-steak-with-snacks-sauces.jpg')">
+        <!-- IMAGEM: Corte de carne saindo do forno a carvão Jasper -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">Um corte preparado no forno a carvão.</h2>
+        <p class="cena-p">Defumado por fora. Perfeito por dentro.</p>
+      </div>
+    </div>
+
+    <!-- CENA 5 -->
+    <div class="cena pos-r" data-i="4">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-ozcbuse-31652926.jpg')">
+        <!-- IMAGEM: Jazz ao vivo — banda Helena Sá no salão -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">O jazz da Helena Sá preenchendo o salão enquanto a noite esfria lá fora.</h2>
+      </div>
+    </div>
+
+    <!-- CENA 6 -->
+    <div class="cena pos-r" data-i="5">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-29039073.jpg')">
+        <!-- IMAGEM: Vista do Rooftop Ibiri à noite — Campos do Jordão abaixo -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">Subir para o Rooftop Ibiri e ver Campos do Jordão do jeito que ela merece ser vista.</h2>
+      </div>
+    </div>
+
+    <!-- CENA 7 -->
+    <div class="cena pos-c" data-i="6">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-polina-tankilevitch-4518883.jpg')">
+        <!-- IMAGEM: Café chegando à mesa — fim da noite, momento de pausa -->
+      </div>
+      <div class="cena-overlay"></div>
+      <div class="cena-body">
+        <h2 class="cena-h2">Perceber, quando o café chega, que você não quer que a noite acabe.</h2>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S7 INAUGURAÇÃO ══ -->
+<section id="inauguracao">
+  <div class="inau-bg">
+    <!-- IMAGEM: Fachada noturna ou salão com velas — atmosfera de abertura -->
+    <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.jpg" alt="">
+  </div>
+  <div class="inau-inner">
+    <div class="inau-orn ae"></div>
+    <h2 class="inau-h2 ae" style="transition-delay:.1s">2 de <span class="dest">junho</span>.</h2>
+    <p class="inau-h2-sub ae" style="transition-delay:.18s">Campos do Jordão ganha um novo endereço.</p>
+    <span class="inau-script ae" style="transition-delay:.24s">Massa I Carni</span>
+    <p class="inau-p ae" style="transition-delay:.3s">
+      A inauguração do MC 1934 acontece no início de <span class="dest">junho</span>, com <span class="dest">jazz</span> ao vivo, casa cheia e uma noite que vai entrar para a história da cidade — assim como tudo o que foi construído aqui com cuidado e intenção.
+    </p>
+    <p class="inau-p ae" style="transition-delay:.36s">As reservas são limitadas.</p>
+    <a href="#" class="btn-solid ae" style="transition-delay:.44s" onclick="openModal();return false;">
+      <span>Quero garantir minha mesa</span>
+    </a>
+    <span class="micro ae" style="transition-delay:.52s">Pré-reserva gratuita. Confirmação enviada por WhatsApp.</span>
+  </div>
+</section>
+
+<!-- ══ S8 RODAPÉ ══ -->
+<footer id="rodape">
+  <div class="rod-logo">
+    <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC Dezenove34">
+  </div>
+  <span class="rod-script">Massa I Carni</span>
+  <h2 class="rod-h2">MC 1934. Massa, Carne e Memória.</h2>
+  <p class="rod-p">Campos do Jordão, Serra da Mantiqueira. Uma experiência para quem acredita que uma boa refeição é também um ato de cultura.</p>
+  <div>
+    <a href="#" class="btn-ghost" onclick="openModal();return false;" style="padding:12px 36px;"><span>Reservar minha mesa</span></a>
+  </div>
+  <ul class="rod-nav">
+    <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+    <li><span class="rod-sep">·</span></li>
+    <li><a href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+    <li><span class="rod-sep">·</span></li>
+    <li><a href="#" target="_blank" rel="noopener">Localização</a></li>
+  </ul>
+  <p class="rod-copy">© 2025 MC Dezenove34 — Campos do Jordão, SP</p>
+</footer>
+
+<!-- MODAL DE PRÉ-RESERVA -->
+<div id="modal" class="modal-bg" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-x" id="modalX" aria-label="Fechar"></button>
+
+    <div id="modalForm">
+      <h3 class="modal-h3" id="modalTitle">Garanta sua mesa</h3>
+      <p class="modal-sub">Pré-reserva gratuita · Confirmação por WhatsApp</p>
+      <form id="resForm" novalidate>
+        <div class="f-grp">
+          <label class="f-lbl" for="fNome">Nome completo</label>
+          <input class="f-inp" type="text" id="fNome" name="nome" required placeholder="Seu nome">
+        </div>
+        <div class="f-grp">
+          <label class="f-lbl" for="fWa">WhatsApp</label>
+          <input class="f-inp" type="tel" id="fWa" name="whatsapp" required placeholder="(11) 99999-9999">
+        </div>
+        <div class="f-duo">
+          <div class="f-grp">
+            <label class="f-lbl" for="fData">Data pretendida</label>
+            <input class="f-inp" type="date" id="fData" name="data" required>
+          </div>
+          <div class="f-grp">
+            <label class="f-lbl" for="fPax">Pessoas</label>
+            <input class="f-inp" type="number" id="fPax" name="pessoas" min="1" max="20" required placeholder="2">
+          </div>
+        </div>
+        <button type="submit" class="modal-btn"><span>Confirmar pré-reserva</span></button>
+      </form>
+    </div>
+
+    <div id="modalOk" class="modal-ok">
+      <p class="modal-ok-h">Sua mesa está reservada.</p>
+      <p class="modal-ok-p">Em breve você receberá a confirmação pelo WhatsApp.<br>Nos vemos em 2 de junho.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+const lenis = new Lenis({
+  duration: 1.2,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+/* ── 01. CURSOR ── */
+(function(){
+  var cp = document.getElementById('cp');
+  var ca = document.getElementById('ca');
+  if (!cp) return;
+  var mx=0,my=0,ax=0,ay=0;
+  document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; cp.style.left=mx+'px'; cp.style.top=my+'px'; });
+  function tick(){ ax+=(mx-ax)*.12; ay+=(my-ay)*.12; ca.style.left=ax+'px'; ca.style.top=ay+'px'; requestAnimationFrame(tick); }
+  tick();
+  document.querySelectorAll('a,button,.btn-ghost,.btn-solid,.foto-box').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ document.body.classList.add('cursor-grande'); });
+    el.addEventListener('mouseleave',function(){ document.body.classList.remove('cursor-grande'); });
+  });
+})();
+
+/* ── 02. NAV SCROLL ── */
+(function(){
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll',function(){ nav.classList.toggle('scrolled', window.scrollY > 60); },{passive:true});
+})();
+
+/* ── 03. MENU MOBILE ── */
+var mobMenu = document.getElementById('mobMenu');
+function closeMob(){ mobMenu.classList.remove('open'); document.body.style.overflow=''; }
+(function(){
+  var btn  = document.getElementById('hambBtn');
+  var cls  = document.getElementById('mobClose');
+  if(btn) btn.addEventListener('click',function(){ mobMenu.classList.add('open'); document.body.style.overflow='hidden'; });
+  if(cls) cls.addEventListener('click', closeMob);
+  mobMenu.addEventListener('click',function(e){ if(e.target===mobMenu) closeMob(); });
+})();
+
+/* ── 04. SCROLLTELLING ── */
+/* ── utilitários compartilhados com o engine ── */
+var _clamp = function(v,a,b){ return Math.min(b,Math.max(a,v)); };
+var _ss    = function(t){ t=_clamp(t,0,1); return t*t*(3-2*t); };   /* smoothstep */
+var _ease  = function(v,a,b){ return _ss((v-a)/(b-a)); };
+
+function initST(wrapId, total, progId){
+  var wrap  = document.getElementById(wrapId);
+  var prog  = document.getElementById(progId);
+  if(!wrap) return;
+  var cenas = wrap.querySelectorAll('.cena');
+  var dots  = prog ? prog.querySelectorAll('.dot') : [];
+  var hint  = wrap.querySelector('.st-scroll-hint');
+  var cur   = -1;
+
+  /* ── progresso global 0→1 dentro do wrapper ── */
+  function globalP(){
+    var rect  = wrap.getBoundingClientRect();
+    var range = wrap.offsetHeight - window.innerHeight;
+    return range > 0 ? _clamp(-rect.top / range, 0, 1) : 0;
+  }
+
+  /* ── schedules: [pStart, pEnd] de cada cena ──
+     7 cenas × 0.100 dwell + 6 transições × 0.050 = 1.000  */
+  var sched = [
+    [0.000, 0.150],   /* cena 0 */
+    [0.150, 0.300],   /* cena 1 */
+    [0.300, 0.450],   /* cena 2 */
+    [0.450, 0.600],   /* cena 3 */
+    [0.600, 0.720],   /* cena 4 */
+    [0.720, 0.860],   /* cena 5 */
+    [0.860, 1.000]    /* cena 6 */
+  ];
+
+  function activeIdx(p){
+    for(var i = sched.length-1; i >= 0; i--){
+      if(p >= sched[i][0]) return i;
+    }
+    return 0;
+  }
+
+  function activate(idx){
+    if(idx === cur) return;
+    cur = idx;
+    cenas.forEach(function(c,i){
+      var on = (i === idx);
+      c.classList.toggle('ativa', on);
+      c.style.opacity      = on ? '1' : '0';
+      c.style.pointerEvents = on ? 'auto' : 'none';
+      /* paralaxe leve no fundo */
+      var bg = c.querySelector('.cena-bg');
+      if(bg) bg.style.transform = 'translateY('+((i-idx)*18)+'px) scale(1.05)';
+    });
+    dots.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
+    if(hint) hint.classList.toggle('hidden', idx > 0);
+  }
+
+  function update(){
+    var p      = globalP();
+    var inView = wrap.getBoundingClientRect().top < window.innerHeight &&
+                 wrap.getBoundingClientRect().bottom > 0;
+    if(prog) prog.classList.toggle('on', inView);
+    activate(activeIdx(p));
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+
+  /* ── goTo: scroll suave até a cena ── */
+  function goTo(idx){
+    idx = _clamp(idx, 0, total-1);
+    var range   = wrap.offsetHeight - window.innerHeight;
+    var wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+    /* vai para 20% dentro do dwell da cena, evitando zona de transição */
+    var targetP = sched[idx][0] + (sched[idx][1] - sched[idx][0]) * 0.25;
+    window.scrollTo({ top: wrapTop + targetP * range, behavior: 'smooth' });
+  }
+
+  /* ── swipe horizontal (mobile) ── */
+  var tx = 0, ty = 0;
+  wrap.addEventListener('touchstart', function(e){
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, {passive:true});
+  wrap.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40){
+      goTo(cur + (dx < 0 ? 1 : -1));
+    }
+  }, {passive:true});
+
+  /* ── teclado (quando seção visível) ── */
+  document.addEventListener('keydown', function(e){
+    var r = wrap.getBoundingClientRect();
+    if(r.top >= window.innerHeight || r.bottom <= 0) return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); goTo(cur+1); }
+    if(e.key==='ArrowLeft' ||e.key==='ArrowUp')  { e.preventDefault(); goTo(cur-1); }
+  });
+
+  activate(0); update();
+}
+
+initST('st2', 7, 'prog2');
+
+/* ── 04b. TIMELINE I — A CIDADE ── */
+(function(){
+  var caps     = document.querySelectorAll('.tl-cap');
+  var imgs     = document.querySelectorAll('.tl-img');
+  var dots     = document.querySelectorAll('.tl-dot');
+  var badgeNum = document.getElementById('tl-badge-num');
+  var badgeYr  = document.getElementById('tl-badge-year');
+
+  var labels = [
+    ['I',   'Serra da Mantiqueira'],
+    ['II',  'Séc. XIX'],
+    ['III', '1914'],
+    ['IV',  'Séc. XX'],
+    ['V',   '1940'],
+    ['VI',  '1934 · 2026']
+  ];
+
+  var cur = -1;
+  function activate(idx){
+    if(idx === cur) return;
+    cur = idx;
+    caps.forEach(function(c){ c.classList.toggle('ativa', +c.dataset.ti === idx); });
+    imgs.forEach(function(im){ im.classList.toggle('ativa', +im.dataset.ti === idx); });
+    dots.forEach(function(d,i){ d.classList.toggle('ativa', i === idx); });
+    if(badgeNum && labels[idx]) badgeNum.textContent = labels[idx][0];
+    if(badgeYr  && labels[idx]) badgeYr.textContent  = labels[idx][1];
+  }
+
+  activate(0);
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) activate(+e.target.dataset.ti);
+    });
+  }, { threshold: 0.45, rootMargin: '-5% 0px -5% 0px' });
+
+  caps.forEach(function(c){ obs.observe(c); });
+})();
+
+/* ── 05. INTERSECTION OBSERVER ── */
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.ae').forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── 06. MODAL ── */
+var modal = document.getElementById('modal');
+function openModal(){ modal.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+
+(function(){
+  var x    = document.getElementById('modalX');
+  var form = document.getElementById('resForm');
+  var mf   = document.getElementById('modalForm');
+  var ok   = document.getElementById('modalOk');
+
+  if(x) x.addEventListener('click', closeModal);
+  modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      mf.style.display='none';
+      ok.classList.add('show');
+      setTimeout(function(){
+        mf.style.display=''; ok.classList.remove('show');
+        form.reset(); closeModal();
+      }, 4000);
+    });
+  }
+})();
+
+/* ── 07. LANG TOGGLE ── */
+(function(){
+  var btn = document.getElementById('langBtn');
+  if(!btn) return;
+  var isEn = false;
+
+  function applyLang(en){
+    document.documentElement.lang = en ? 'en' : 'pt-BR';
+    document.querySelectorAll('.i18n[data-pt][data-en]').forEach(function(el){
+      el.innerHTML = en ? el.dataset.en : el.dataset.pt;
+    });
+  }
+
+  btn.addEventListener('click', function(){ isEn = !isEn; applyLang(isEn); });
+})();
+
+/* ── Galeria horizontal scroll-driven ── */
+(function(){
+  var wrap  = document.getElementById('galeriaWrap');
+  var track = document.getElementById('galeriaTrack');
+  var fill  = document.getElementById('galeriaFill');
+  var curEl = document.getElementById('galeriaCur');
+  if(!wrap || !track) return;
+
+  var fotos = track.querySelectorAll('.galeria-foto');
+  var N = fotos.length;
+
+  function getP(){
+    var rect  = wrap.getBoundingClientRect();
+    var range = wrap.offsetHeight - window.innerHeight;
+    return range > 0 ? Math.min(1, Math.max(0, -rect.top / range)) : 0;
+  }
+
+  function update(){
+    /* No mobile a fita usa overflow-x nativo — não aplicar transform */
+    if(window.innerWidth <= 768) return;
+    var p        = getP();
+    var maxShift = track.scrollWidth - window.innerWidth;
+    track.style.transform = 'translateX(' + (-p * maxShift) + 'px)';
+    if(fill)  fill.style.width = (p * 100) + '%';
+    if(curEl) curEl.textContent = String(Math.min(N, Math.floor(p * N) + 1)).padStart(2,'0');
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
