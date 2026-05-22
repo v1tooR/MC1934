@@ -177,13 +177,13 @@
   }
   .hero-bg { position: absolute; inset: 0; }
   .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .hero-overlay { position: absolute; inset: 0; background: rgba(26,18,16,.80); z-index: 1; }
+  .hero-overlay { position: absolute; inset: 0; background: rgba(26,18,16,.72); z-index: 1; }
 
   .hero-inner {
     position: relative; z-index: 3;
-    text-align: center; width: 100%; max-width: 860px;
+    text-align: center; width: 100%; max-width: 760px;
     padding: 0 var(--ph-mob);
-    display: flex; flex-direction: column; align-items: center;
+    display: flex; flex-direction: column; align-items: center; gap: 28px;
   }
   .hero-loc {
     display: flex; align-items: center; gap: 16px;
@@ -194,7 +194,7 @@
   }
   .hero-loc-rule { display: block; height: 1px; width: 48px; background: var(--marfim); }
 
-  .hero-logo-wrap { width: clamp(180px,36vw,500px); margin-bottom: 18px; }
+  .hero-logo-wrap { width: clamp(190px,34vw,460px); margin-bottom: 0; }
   .hero-logo-wrap img {
     width: 100%; height: auto; object-fit: contain;
     filter: brightness(0) invert(1); display: block;
@@ -211,8 +211,9 @@
   }
   .hero-h1 {
     font-family: var(--font-display); font-weight: 400; font-style: italic;
-    font-size: clamp(24px,3.5vw,48px); color: var(--marfim);
-    letter-spacing: .01em; line-height: 1.1; margin-bottom: 18px;
+    font-size: clamp(24px,3.2vw,42px); color: var(--marfim);
+    letter-spacing: .01em; line-height: 1.14; margin-bottom: 0;
+    max-width: 680px;
   }
   .hero-sub {
     font-family: var(--font-corpo); font-weight: 300;
@@ -223,7 +224,7 @@
   .btn-ghost {
     font-family: var(--font-corpo); font-size: 11px; font-weight: 700;
     letter-spacing: .25em; text-transform: uppercase; color: var(--marfim);
-    border: 1px solid var(--carmesim); padding: 15px 44px; background: transparent;
+    border: 1px solid var(--carmesim); padding: 15px 44px; background: rgba(26,18,16,.22);
     display: inline-block; position: relative; overflow: hidden;
     transition: color var(--t-base);
   }
@@ -380,18 +381,19 @@
   }
   .prog-bot {
     position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
-    display: flex; gap: 12px;
+    width: min(280px, calc(100vw - 48px)); height: 2px;
+    background: rgba(255,237,206,.24);
     z-index: 50; opacity: 0; transition: opacity var(--t-base); pointer-events: none;
+    overflow: hidden;
   }
   .prog-lat.on, .prog-bot.on { opacity: 1; }
-  .dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--marfim); opacity: .25;
-    transition: opacity var(--t-base), transform var(--t-base), background var(--t-base);
+  .prog-bot-fill {
+    display: block; width: 100%; height: 100%;
+    background: var(--carmesim);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .18s linear;
   }
-  .prog-bot .dot { width: 6px; height: 6px; }
-  .dot.on { background: var(--carmesim); opacity: 1; transform: scale(1.3); }
-
   /* ─── TL. TIMELINE I — A CIDADE ─── */
   .tl-wrap { background: var(--preto-quente); }
 
@@ -912,6 +914,7 @@
     z-index: 0;
   }
   .modal-btn:hover::before { transform: translateY(0); }
+  .modal-btn:disabled { opacity: .7; pointer-events: none; }
   .modal-ok { display: none; text-align: center; padding: 20px 0; }
   .modal-ok.show { display: block; }
   .modal-ok-h {
@@ -1020,10 +1023,8 @@
 <div class="cursor-anel"  id="ca"></div>
 
 <!-- INDICADORES ST2 -->
-<div class="prog-bot" id="prog2">
-  <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
-  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-  <div class="dot"></div>
+<div class="prog-bot" id="prog2" role="progressbar" aria-label="Progresso da experiência" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <span class="prog-bot-fill" aria-hidden="true"></span>
 </div>
 
 <!-- MENU MOBILE -->
@@ -1066,42 +1067,20 @@
 <section id="hero">
   <div class="hero-bg">
     <!-- IMAGEM: Fachada noturna / ambiente do MC Dezenove34 — pedra, metal, luzes aquecidas -->
-    <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.jpg" alt="MC Dezenove34 — Campos do Jordão">
+    <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.webp" alt="MC Dezenove34 — Campos do Jordão">
   </div>
   <div class="hero-overlay"></div>
 
   <div class="hero-inner">
-    <div class="hero-loc ae">
-      <span class="hero-loc-rule"></span>
-      <span>CAMPOS DO JORDÃO · SERRA DA MANTIQUEIRA</span>
-      <span class="hero-loc-rule"></span>
-    </div>
     <div class="hero-logo-wrap ae" style="transition-delay:.08s">
       <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC 1934 — Massa I Carni">
     </div>
-    <span class="hero-script ae" style="transition-delay:.22s">Il ristorante in Capivari.</span>
-    <h1 class="hero-h1 ae" style="transition-delay:.30s">
+    <h1 class="hero-h1 ae" style="transition-delay:.22s">
       <span class="i18n" data-pt="Uma cidade com 150 anos de história. Uma mesa para você vivê-la." data-en="A city with 150 years of history. A table for you to live it.">Uma cidade com 150 anos de história. Uma mesa para você vivê-la.</span>
     </h1>
-    <p class="hero-sub ae" style="transition-delay:.38s">
-      <span class="i18n"
-        data-pt="O MC 1934 nasce em Campos do Jordão como uma homenagem à terra, à memória e ao prazer de comer bem."
-        data-en="MC 1934 is born in Campos do Jordão as a tribute to the land, memory, and the pleasure of eating well.">O MC 1934 nasce em Campos do Jordão como uma homenagem à terra, à memória e ao prazer de comer bem.</span>
-    </p>
-    <a href="#" class="btn-ghost ae" style="transition-delay:.46s" onclick="openModal();return false;">
+    <a href="#" class="btn-ghost ae" style="transition-delay:.34s" onclick="openModal();return false;">
       <span class="i18n" data-pt="Garanta sua mesa na inauguração" data-en="Reserve your table for opening night">Garanta sua mesa na inauguração</span>
     </a>
-  </div>
-
-  <!-- Barra inferior -->
-  <div class="hero-foot" aria-hidden="true">
-    <span class="hero-foot-l">est. MMXXVI · 1.628 m</span>
-    <div class="hero-foot-c">
-      <span class="hero-foot-rule"></span>
-      <span class="i18n" data-pt="Desça com calma" data-en="Take your time">Desça com calma</span>
-      <span class="hero-foot-rule"></span>
-    </div>
-    <span class="hero-foot-r">Massa · Carne · Memória</span>
   </div>
 </section>
 
@@ -1119,11 +1098,11 @@
     <!-- Painel de imagem sticky (desktop) -->
     <div class="tl-img-panel">
       <div class="tl-img ativa" data-ti="0" style="background-image:url('assets/imgs/serra.webp')"></div>
-      <div class="tl-img"        data-ti="1" style="background-image:url('assets/imgs/pexels-kathrinepnw-15945555.jpg')"></div>
-      <div class="tl-img"        data-ti="2" style="background-image:url('assets/imgs/pexels-justus-menke-3490295-5213972.jpg')"></div>
-      <div class="tl-img"        data-ti="3" style="background-image:url('assets/imgs/pexels-marlein-16021237.jpg')"></div>
-      <div class="tl-img"        data-ti="4" style="background-image:url('assets/imgs/pexels-ahmad-salisu-jaafar-219868809-34382330.jpg')"></div>
-      <div class="tl-img"        data-ti="5" style="background-image:url('assets/imgs/pexels-thomas-wannmacher-2160752874-36970225.jpg')"></div>
+      <div class="tl-img"        data-ti="1" style="background-image:url('assets/imgs/cap2_1x.webp')"></div>
+      <div class="tl-img"        data-ti="2" style="background-image:url('assets/imgs/cap3_1_1x.webp')"></div>
+      <div class="tl-img"        data-ti="3" style="background-image:url('assets/imgs/cap4_1x.webp')"></div>
+      <div class="tl-img"        data-ti="4" style="background-image:url('assets/imgs/cap5_1x.webp')"></div>
+      <div class="tl-img"        data-ti="5" style="background-image:url('assets/imgs/cap6_1x.webp')"></div>
       <div class="tl-img-overlay"></div>
       <div class="tl-img-grain"  aria-hidden="true"></div>
       <div class="tl-img-badge">
@@ -1143,7 +1122,7 @@
 
       <div class="tl-cap ativa" data-ti="0">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-max-griss-16866522-14316295.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/serra.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">I</span>
         <span class="tl-cap-num">Capítulo I</span>
         <span class="tl-cap-year">Serra da Mantiqueira</span>
@@ -1153,7 +1132,7 @@
 
       <div class="tl-cap" data-ti="1">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-kathrinepnw-15945555.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap2_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">II</span>
         <span class="tl-cap-num">Capítulo II</span>
         <span class="tl-cap-year">Séc. XIX</span>
@@ -1163,7 +1142,7 @@
 
       <div class="tl-cap" data-ti="2">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-justus-menke-3490295-5213972.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap3_1_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1914</span>
         <span class="tl-cap-num">Capítulo III</span>
         <span class="tl-cap-year">1914</span>
@@ -1173,7 +1152,7 @@
 
       <div class="tl-cap" data-ti="3">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-marlein-16021237.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap4_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">arte</span>
         <span class="tl-cap-num">Capítulo IV</span>
         <span class="tl-cap-year">Séc. XX</span>
@@ -1183,7 +1162,7 @@
 
       <div class="tl-cap" data-ti="4">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-ahmad-salisu-jaafar-219868809-34382330.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap5_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1940</span>
         <span class="tl-cap-num">Capítulo V</span>
         <span class="tl-cap-year">1940</span>
@@ -1193,7 +1172,7 @@
 
       <div class="tl-cap" data-ti="5">
         <div class="tl-spine-dot"></div>
-        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/pexels-thomas-wannmacher-2160752874-36970225.jpg')"></div>
+        <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap6_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1934</span>
         <span class="tl-cap-num">Capítulo VI</span>
         <span class="tl-cap-year">1934 · 2026</span>
@@ -1219,7 +1198,7 @@
   </div>
   <div class="rest-foto ae" style="transition-delay:.2s">
     <!-- IMAGEM: Interior do restaurante — ambiente noturno, mesas, iluminação quente -->
-    <img src="assets/imgs/pexels-jonathanborba-28559497.jpg" alt="Interior do MC Dezenove34">
+    <img src="assets/imgs/pexels-jonathanborba-28559497.webp" alt="Interior do MC Dezenove34">
   </div>
 </section>
 
@@ -1227,7 +1206,7 @@
 <section id="chef">
   <div class="chef-foto ae">
     <!-- IMAGEM: André Boccato — foto editorial em P&B ou tratamento de cor quente -->
-    <img src="assets/imgs/chef-pouring-seasoning-beef-stake-plate.jpg" alt="Chef André Boccato">
+    <img src="assets/imgs/andre.webp" alt="Chef André Boccato">
   </div>
   <div class="chef-sep"></div>
   <div class="chef-txt">
@@ -1268,52 +1247,52 @@
 
         <!-- COL 1 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:32vw">
-          <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.jpg" alt="Luz de tarde — MC 1934">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-22882530.webp" alt="Luz de tarde — MC 1934">
           <span class="galeria-ghost">I</span>
           <div class="galeria-legenda"><span>Luz de tarde</span></div>
         </div>
 
         <!-- COL 2 — dois halfs empilhados -->
         <div class="galeria-foto" style="width:44vw">
-          <img src="assets/imgs/pexels-nadin-sh-78971847-34434635.jpg" alt="Mesas e detalhes — MC 1934">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-34434635.webp" alt="Mesas e detalhes — MC 1934">
           <span class="galeria-ghost">II</span>
           <div class="galeria-legenda"><span>Mesas e detalhes</span></div>
         </div>
         <div class="galeria-foto" style="width:44vw">
-          <img src="assets/imgs/pexels-jonathanborba-28559497.jpg" alt="À mesa — MC 1934">
+          <img src="assets/imgs/pexels-jonathanborba-28559497.webp" alt="À mesa — MC 1934">
           <span class="galeria-ghost">III</span>
           <div class="galeria-legenda"><span>À mesa</span></div>
         </div>
 
         <!-- COL 3 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:26vw">
-          <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.jpg" alt="O prato — MC 1934">
+          <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.webp" alt="O prato — MC 1934">
           <span class="galeria-ghost">IV</span>
           <div class="galeria-legenda"><span>O prato</span></div>
         </div>
 
         <!-- COL 4 — dois halfs empilhados -->
         <div class="galeria-foto" style="width:38vw">
-          <img src="assets/imgs/pexels-nano-erdozain-120534369-29039073.jpg" alt="O vinho — MC 1934">
+          <img src="assets/imgs/pexels-nano-erdozain-120534369-29039073.webp" alt="O vinho — MC 1934">
           <span class="galeria-ghost">V</span>
           <div class="galeria-legenda"><span>O vinho</span></div>
         </div>
         <div class="galeria-foto" style="width:38vw">
-          <img src="assets/imgs/pexels-valeriya-19503822.jpg" alt="O detalhe — MC 1934">
+          <img src="assets/imgs/pexels-valeriya-19503822.webp" alt="O detalhe — MC 1934">
           <span class="galeria-ghost">VI</span>
           <div class="galeria-legenda"><span>O detalhe</span></div>
         </div>
 
         <!-- COL 5 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:30vw">
-          <img src="assets/imgs/pexels-nadin-sh-78971847-28996262.jpg" alt="A oliveira centenária — MC 1934">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-28996262.webp" alt="A oliveira centenária — MC 1934">
           <span class="galeria-ghost">VII</span>
           <div class="galeria-legenda"><span>A oliveira centenária</span></div>
         </div>
 
         <!-- COL 6 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:40vw">
-          <img src="assets/imgs/pexels-nadin-sh-78971847-35870358.jpg" alt="Rooftop Ibiri — MC 1934">
+          <img src="assets/imgs/pexels-nadin-sh-78971847-35870358.webp" alt="Rooftop Ibiri — MC 1934">
           <span class="galeria-ghost">VIII</span>
           <div class="galeria-legenda"><span>Rooftop Ibiri</span></div>
         </div>
@@ -1335,7 +1314,7 @@
 
     <!-- CENA 1 -->
     <div class="cena ativa pos-c" data-i="0">
-      <div class="cena-bg" style="background-image:url('assets/imgs/beautifully-plated-pasta-dish-being-enjoyed-cozy-dining-setting-with-warm-lighting.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/beautifully-plated-pasta-dish-being-enjoyed-cozy-dining-setting-with-warm-lighting.webp')">
         <!-- IMAGEM: Ambiente acolhedor do restaurante — mesas, velas, entrada -->
       </div>
       <div class="cena-overlay"></div>
@@ -1346,7 +1325,7 @@
 
     <!-- CENA 2 -->
     <div class="cena pos-c" data-i="1">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-28503618.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-28503618.webp')">
         <!-- IMAGEM: Cozinha em ação — vapor, cozinheiros, calor -->
       </div>
       <div class="cena-overlay"></div>
@@ -1357,7 +1336,7 @@
 
     <!-- CENA 3 -->
     <div class="cena pos-l" data-i="2">
-      <div class="cena-bg" style="background-image:url('assets/imgs/high-angle-carbonara-pasta-wooden-table.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/high-angle-carbonara-pasta-wooden-table.webp')">
         <!-- IMAGEM: Prato em close — massa fresca com molho, feita à mão -->
       </div>
       <div class="cena-overlay"></div>
@@ -1369,7 +1348,7 @@
 
     <!-- CENA 4 -->
     <div class="cena pos-l" data-i="3">
-      <div class="cena-bg" style="background-image:url('assets/imgs/tenderloin-steak-with-snacks-sauces.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/tenderloin-steak-with-snacks-sauces.webp')">
         <!-- IMAGEM: Corte de carne saindo do forno a carvão Jasper -->
       </div>
       <div class="cena-overlay"></div>
@@ -1381,7 +1360,7 @@
 
     <!-- CENA 5 -->
     <div class="cena pos-r" data-i="4">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-ozcbuse-31652926.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-ozcbuse-31652926.webp')">
         <!-- IMAGEM: Jazz ao vivo — banda Helena Sá no salão -->
       </div>
       <div class="cena-overlay"></div>
@@ -1392,7 +1371,7 @@
 
     <!-- CENA 6 -->
     <div class="cena pos-r" data-i="5">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-29039073.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-nano-erdozain-120534369-29039073.webp')">
         <!-- IMAGEM: Vista do Rooftop Ibiri à noite — Campos do Jordão abaixo -->
       </div>
       <div class="cena-overlay"></div>
@@ -1403,7 +1382,7 @@
 
     <!-- CENA 7 -->
     <div class="cena pos-c" data-i="6">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-polina-tankilevitch-4518883.jpg')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-polina-tankilevitch-4518883.webp')">
         <!-- IMAGEM: Café chegando à mesa — fim da noite, momento de pausa -->
       </div>
       <div class="cena-overlay"></div>
@@ -1419,7 +1398,7 @@
 <section id="inauguracao">
   <div class="inau-bg">
     <!-- IMAGEM: Fachada noturna ou salão com velas — atmosfera de abertura -->
-    <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.jpg" alt="">
+    <img src="assets/imgs/pexels-nuno-costa-451519238-33671131.webp" alt="">
   </div>
   <div class="inau-inner">
     <div class="inau-orn ae"></div>
@@ -1552,7 +1531,7 @@ function initST(wrapId, total, progId){
   var prog  = document.getElementById(progId);
   if(!wrap) return;
   var cenas = wrap.querySelectorAll('.cena');
-  var dots  = prog ? prog.querySelectorAll('.dot') : [];
+  var fill  = prog ? prog.querySelector('.prog-bot-fill') : null;
   var hint  = wrap.querySelector('.st-scroll-hint');
   var cur   = -1;
 
@@ -1594,7 +1573,6 @@ function initST(wrapId, total, progId){
       var bg = c.querySelector('.cena-bg');
       if(bg) bg.style.transform = 'translateY('+((i-idx)*18)+'px) scale(1.05)';
     });
-    dots.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
     if(hint) hint.classList.toggle('hidden', idx > 0);
   }
 
@@ -1603,6 +1581,8 @@ function initST(wrapId, total, progId){
     var inView = wrap.getBoundingClientRect().top < window.innerHeight &&
                  wrap.getBoundingClientRect().bottom > 0;
     if(prog) prog.classList.toggle('on', inView);
+    if(fill) fill.style.transform = 'scaleX(' + p + ')';
+    if(prog) prog.setAttribute('aria-valuenow', Math.round(p * 100));
     activate(activeIdx(p));
   }
 
@@ -1709,14 +1689,43 @@ function closeModal(){ modal.classList.remove('open'); document.body.style.overf
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
 
   if(form){
-    form.addEventListener('submit',function(e){
+    form.addEventListener('submit',async function(e){
       e.preventDefault();
-      mf.style.display='none';
-      ok.classList.add('show');
-      setTimeout(function(){
-        mf.style.display=''; ok.classList.remove('show');
-        form.reset(); closeModal();
-      }, 4000);
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn ? btn.innerHTML : '';
+      if(btn){
+        btn.disabled = true;
+        btn.innerHTML = '<span>Enviando...</span>';
+      }
+
+      try {
+        var payload = Object.fromEntries(new FormData(form).entries());
+        var res = await fetch('reservas.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error('Falha ao salvar');
+
+        mf.style.display='none';
+        ok.classList.add('show');
+        setTimeout(function(){
+          mf.style.display=''; ok.classList.remove('show');
+          form.reset(); closeModal();
+        }, 4000);
+      } catch(err) {
+        alert('Não foi possível salvar sua pré-reserva agora. Tente novamente em instantes.');
+      } finally {
+        if(btn){
+          btn.disabled = false;
+          btn.innerHTML = original;
+        }
+      }
     });
   }
 })();

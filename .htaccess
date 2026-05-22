@@ -1,0 +1,3 @@
+<Files "reservas.csv">
+  Require all denied
+</Files>

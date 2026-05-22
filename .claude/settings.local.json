@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command ffmpeg -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command magick -ErrorAction SilentlyContinue)",
+      "PowerShell(node -e \"require\\('sharp'\\); console.log\\('sharp ok'\\)\" 2>&1)",
+      "PowerShell(Get-Command cwebp -ErrorAction SilentlyContinue)",
+      "Bash(node compress-images.js)",
+      "Bash(rm c:/Users/Usuario/MC1934/assets/imgs/*.jpg && echo \"Deletados com sucesso\" && ls c:/Users/Usuario/MC1934/assets/imgs/ | wc -l && echo \"arquivos restantes\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Usuario\\MC1934\\assets\\imgs"
+    ]
+  }
+}
