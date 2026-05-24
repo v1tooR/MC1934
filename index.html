@@ -11,9 +11,49 @@
   <link rel="icon" type="image/svg+xml" href="assets/logo/1934-preto.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Caveat:wght@400;500;600;700&family=Limelight&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
   <style>
+
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreRegular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreSemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'The Camellia';
+    src: url('assets/fonts/the-camellia-font/TheCamellia-YqjDj.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
 
   /* ─── 01. VARIÁVEIS ─── */
   :root {
@@ -25,9 +65,10 @@
     --preto-quente:    #1A1210;
     --carvao:          #2C2220;
     --off-white:       #FDF8F0;
-    --font-display:    'Cormorant Garamond', Georgia, serif;
+    --font-display:    'Palmore Vintage', Georgia, serif;
     --font-corpo:      'Lato', Helvetica, sans-serif;
-    --font-script:     'Caveat', cursive;
+    --font-script:     'The Camellia', cursive;
+    --font-display-line-height: .75;
     --pv-desk:  120px;
     --pv-mob:    72px;
     --ph-desk:    8vw;
@@ -924,6 +965,28 @@
   .modal-ok-p {
     font-family: var(--font-corpo); font-size: 13px;
     color: var(--carvao); opacity: .7; line-height: 1.7;
+  }
+
+  .mob-menu a,
+  .hero-h1,
+  .cena-h2,
+  .tl-hdr-h,
+  .tl-img-badge-year,
+  .tl-cap-ghost,
+  .tl-cap-h2,
+  .rest-water,
+  .rest-h2,
+  .chef-nome,
+  .chef-h3,
+  .espaco-h2,
+  .galeria-ghost,
+  .galeria-legenda span,
+  .inau-h2,
+  .inau-h2-sub,
+  .rod-h2,
+  .modal-h3,
+  .modal-ok-h {
+    line-height: var(--font-display-line-height);
   }
 
   /* ─── 13. ANIMAÇÕES DE ENTRADA ─── */
