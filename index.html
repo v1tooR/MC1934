@@ -811,7 +811,7 @@
   .inau-p {
     font-family: var(--font-corpo); font-weight: 400;
     font-size: clamp(16px,1.6vw,18px); color: var(--marfim);
-    opacity: .88; max-width: 500px; line-height: 1.85; margin: 0 auto;
+    opacity: .88; max-width: 500px; line-height: 1.85; margin: 18px auto 0;
   }
   .inau-p + .inau-p { margin-top: 18px; }
   .dest { color: var(--oliveira); }
@@ -886,6 +886,7 @@
   }
 
   /* ─── 12. MODAL ─── */
+  #modal { display: none !important; }
   .modal-bg {
     position: fixed; inset: 0; background: rgba(26,18,16,.94);
     z-index: 200; display: flex; align-items: center; justify-content: center;
@@ -1099,7 +1100,7 @@
   <a href="#restaurante" onclick="closeMob()" class="i18n" data-pt="A Casa"    data-en="The House">A Casa</a>
   <a href="#chef"        onclick="closeMob()" class="i18n" data-pt="O Chef"    data-en="The Chef">O Chef</a>
   <a href="#espaco"      onclick="closeMob()" class="i18n" data-pt="O Espaço"  data-en="The Space">O Espaço</a>
-  <a href="#" onclick="closeMob();openModal();return false;" class="i18n" data-pt="Reservar" data-en="Reserve">Reservar</a>
+  <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." onclick="closeMob()" target="_blank" rel="noopener" class="i18n" data-pt="Reservar" data-en="Reserve">Reservar</a>
 </div>
 
 <!-- NAV -->
@@ -1121,7 +1122,7 @@
       <span class="lang-sep">·</span>
       <span class="lang-en">EN</span>
     </button>
-    <a href="#" class="btn-nav i18n" data-pt="Reservar Mesa" data-en="Reserve Table" onclick="openModal();return false;"><span>Reservar Mesa</span></a>
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="btn-nav" target="_blank" rel="noopener"><span class="i18n" data-pt="Reservar Mesa" data-en="Reserve Table">Reservar Mesa</span></a>
   </div>
   <button class="hamburger" id="hambBtn" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1142,7 +1143,7 @@
     <h1 class="hero-h1 ae" style="transition-delay:.22s">
       <span class="i18n" data-pt="Uma cidade com 150 anos de história. Uma mesa para você vivê-la." data-en="A city with 150 years of history. A table for you to live it.">Uma cidade com 150 anos de história. Uma mesa para você vivê-la.</span>
     </h1>
-    <a href="#" class="btn-ghost ae" style="transition-delay:.34s" onclick="openModal();return false;">
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="btn-ghost ae" style="transition-delay:.34s" target="_blank" rel="noopener">
       <span class="i18n" data-pt="Garanta sua mesa na inauguração" data-en="Reserve your table for opening night">Garanta sua mesa na inauguração</span>
     </a>
   </div>
@@ -1152,9 +1153,9 @@
 <section id="st1" class="tl-wrap">
 
   <div class="tl-hdr">
-    <span class="tl-hdr-eyebrow">A Cidade · A História</span>
-    <h2 class="tl-hdr-h ae">Antes do MC 1934,<br><em>havia Campos do Jordão.</em></h2>
-    <p class="tl-hdr-p ae" style="transition-delay:.12s">Uma cidade que não foi construída. Foi sentida.</p>
+    <span class="tl-hdr-eyebrow i18n" data-pt="A Cidade · A História" data-en="The City · The History">A Cidade · A História</span>
+    <h2 class="tl-hdr-h ae i18n" data-pt="Antes do MC 1934,&lt;br&gt;&lt;em&gt;havia Campos do Jordão.&lt;/em&gt;" data-en="Before MC 1934,&lt;br&gt;&lt;em&gt;there was Campos do Jordão.&lt;/em&gt;">Antes do MC 1934,<br><em>havia Campos do Jordão.</em></h2>
+    <p class="tl-hdr-p ae i18n" style="transition-delay:.12s" data-pt="Uma cidade que não foi construída. Foi sentida." data-en="A city not built, but felt.">Uma cidade que não foi construída. Foi sentida.</p>
   </div>
 
   <div class="tl-body">
@@ -1188,60 +1189,60 @@
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/serra.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">I</span>
-        <span class="tl-cap-num">Capítulo I</span>
+        <span class="tl-cap-num i18n" data-pt="Capítulo I" data-en="Chapter I">Capítulo I</span>
         <span class="tl-cap-year">Serra da Mantiqueira</span>
-        <h2 class="tl-cap-h2">Antes de qualquer nome, havia a montanha.</h2>
-        <p class="tl-cap-p">A Serra da Mantiqueira, a mais de 1.600 metros, com suas araucárias, sua névoa e o silêncio de quem não precisa se justificar. Campos do Jordão não foi descoberta. Foi sentida.</p>
+        <h2 class="tl-cap-h2 i18n" data-pt="Antes de qualquer nome, havia a montanha." data-en="Before any name, there was the mountain.">Antes de qualquer nome, havia a montanha.</h2>
+        <p class="tl-cap-p i18n" data-pt="A Serra da Mantiqueira, a mais de 1.600 metros, com suas araucárias, sua névoa e o silêncio de quem não precisa se justificar. Campos do Jordão não foi descoberta. Foi sentida." data-en="The Serra da Mantiqueira, at over 1,600 meters, with its araucaria pines, its mist and the silence of those who need no justification. Campos do Jordão was not discovered. It was felt.">A Serra da Mantiqueira, a mais de 1.600 metros, com suas araucárias, sua névoa e o silêncio de quem não precisa se justificar. Campos do Jordão não foi descoberta. Foi sentida.</p>
       </div>
 
       <div class="tl-cap" data-ti="1">
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap2_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">II</span>
-        <span class="tl-cap-num">Capítulo II</span>
-        <span class="tl-cap-year">Séc. XIX</span>
-        <h2 class="tl-cap-h2">No final do século XIX, os primeiros chegaram em lombo de burro.</h2>
-        <p class="tl-cap-p">Médicos, viajantes, famílias inteiras subindo a serra em busca de algo que a cidade grande não tinha: ar puro, tempo e cura. Campos do Jordão tornou-se o lugar onde o Brasil vinha se recuperar.</p>
+        <span class="tl-cap-num i18n" data-pt="Capítulo II" data-en="Chapter II">Capítulo II</span>
+        <span class="tl-cap-year i18n" data-pt="Séc. XIX" data-en="19th C.">Séc. XIX</span>
+        <h2 class="tl-cap-h2 i18n" data-pt="No final do século XIX, os primeiros chegaram em lombo de burro." data-en="In the late 19th century, the first arrivals came on mule-back.">No final do século XIX, os primeiros chegaram em lombo de burro.</h2>
+        <p class="tl-cap-p i18n" data-pt="Médicos, viajantes, famílias inteiras subindo a serra em busca de algo que a cidade grande não tinha: ar puro, tempo e cura. Campos do Jordão tornou-se o lugar onde o Brasil vinha se recuperar." data-en="Doctors, travelers, entire families climbing the mountains in search of something the city lacked: clean air, time and healing. Campos do Jordão became the place where Brazil came to recover.">Médicos, viajantes, famílias inteiras subindo a serra em busca de algo que a cidade grande não tinha: ar puro, tempo e cura. Campos do Jordão tornou-se o lugar onde o Brasil vinha se recuperar.</p>
       </div>
 
       <div class="tl-cap" data-ti="2">
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap3_1_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1914</span>
-        <span class="tl-cap-num">Capítulo III</span>
+        <span class="tl-cap-num i18n" data-pt="Capítulo III" data-en="Chapter III">Capítulo III</span>
         <span class="tl-cap-year">1914</span>
-        <h2 class="tl-cap-h2">A ferrovia chegou em 1914 e mudou tudo.</h2>
-        <p class="tl-cap-p">A locomotiva "Catarina" rasgou a Mantiqueira e trouxe o mundo até aqui. Com ela vieram artistas, intelectuais, presidentes. A cidade que curava passou a encantar.</p>
+        <h2 class="tl-cap-h2 i18n" data-pt="A ferrovia chegou em 1914 e mudou tudo." data-en="The railroad arrived in 1914 and changed everything.">A ferrovia chegou em 1914 e mudou tudo.</h2>
+        <p class="tl-cap-p i18n" data-pt="A locomotiva &ldquo;Catarina&rdquo; rasgou a Mantiqueira e trouxe o mundo até aqui. Com ela vieram artistas, intelectuais, presidentes. A cidade que curava passou a encantar." data-en="The locomotive &ldquo;Catarina&rdquo; cut through the Mantiqueira and brought the world here. With it came artists, intellectuals, presidents. The city that healed began to enchant.">A locomotiva "Catarina" rasgou a Mantiqueira e trouxe o mundo até aqui. Com ela vieram artistas, intelectuais, presidentes. A cidade que curava passou a encantar.</p>
       </div>
 
       <div class="tl-cap" data-ti="3">
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap4_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">arte</span>
-        <span class="tl-cap-num">Capítulo IV</span>
-        <span class="tl-cap-year">Séc. XX</span>
-        <h2 class="tl-cap-h2">Pintores vieram e não conseguiram ir embora.</h2>
-        <p class="tl-cap-p">Lasar Segall, Paulo Gagarin, Lila Egydio Martins. Cada um deixou um pedaço de sua alma nessas paisagens. Campos do Jordão não inspira. Ela transforma.</p>
+        <span class="tl-cap-num i18n" data-pt="Capítulo IV" data-en="Chapter IV">Capítulo IV</span>
+        <span class="tl-cap-year i18n" data-pt="Séc. XX" data-en="20th C.">Séc. XX</span>
+        <h2 class="tl-cap-h2 i18n" data-pt="Pintores vieram e não conseguiram ir embora." data-en="Painters came and could not leave.">Pintores vieram e não conseguiram ir embora.</h2>
+        <p class="tl-cap-p i18n" data-pt="Lasar Segall, Paulo Gagarin, Lila Egydio Martins. Cada um deixou um pedaço de sua alma nessas paisagens. Campos do Jordão não inspira. Ela transforma." data-en="Lasar Segall, Paulo Gagarin, Lila Egydio Martins. Each left a piece of their soul in these landscapes. Campos do Jordão does not inspire. It transforms.">Lasar Segall, Paulo Gagarin, Lila Egydio Martins. Cada um deixou um pedaço de sua alma nessas paisagens. Campos do Jordão não inspira. Ela transforma.</p>
       </div>
 
       <div class="tl-cap" data-ti="4">
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap5_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1940</span>
-        <span class="tl-cap-num">Capítulo V</span>
+        <span class="tl-cap-num i18n" data-pt="Capítulo V" data-en="Chapter V">Capítulo V</span>
         <span class="tl-cap-year">1940</span>
-        <h2 class="tl-cap-h2">Em 1940, um homem de 51 anos escalou a Pedra do Baú com as próprias mãos.</h2>
-        <p class="tl-cap-p">Seiscentos degraus cravados na rocha viva. No topo, ele proclamou a vitória do espírito sobre a matéria. Em Campos do Jordão, a altitude nunca foi obstáculo. Sempre foi convite.</p>
+        <h2 class="tl-cap-h2 i18n" data-pt="Em 1940, um homem de 51 anos escalou a Pedra do Baú com as próprias mãos." data-en="In 1940, a 51-year-old man climbed Pedra do Baú with his bare hands.">Em 1940, um homem de 51 anos escalou a Pedra do Baú com as próprias mãos.</h2>
+        <p class="tl-cap-p i18n" data-pt="Seiscentos degraus cravados na rocha viva. No topo, ele proclamou a vitória do espírito sobre a matéria. Em Campos do Jordão, a altitude nunca foi obstáculo. Sempre foi convite." data-en="Six hundred steps carved into living rock. At the summit, he proclaimed the victory of spirit over matter. In Campos do Jordão, altitude was never an obstacle. Always an invitation.">Seiscentos degraus cravados na rocha viva. No topo, ele proclamou a vitória do espírito sobre a matéria. Em Campos do Jordão, a altitude nunca foi obstáculo. Sempre foi convite.</p>
       </div>
 
       <div class="tl-cap" data-ti="5">
         <div class="tl-spine-dot"></div>
         <div class="tl-cap-mob-img" style="background-image:url('assets/imgs/cap6_1x.webp')"></div>
         <span class="tl-cap-ghost" aria-hidden="true">1934</span>
-        <span class="tl-cap-num">Capítulo VI</span>
+        <span class="tl-cap-num i18n" data-pt="Capítulo VI" data-en="Chapter VI">Capítulo VI</span>
         <span class="tl-cap-year">1934 · 2026</span>
-        <h2 class="tl-cap-h2">Toda grande história precisa de uma boa mesa.</h2>
-        <p class="tl-cap-p">Em 1934, Campos do Jordão já era o endereço mais desejado do Brasil. Hoje, o MC 1934 nasce para honrar essa herança, com gastronomia, memória e a convicção de que uma refeição extraordinária também faz parte da história de um lugar.</p>
+        <h2 class="tl-cap-h2 i18n" data-pt="Toda grande história precisa de uma boa mesa." data-en="Every great story needs a good table.">Toda grande história precisa de uma boa mesa.</h2>
+        <p class="tl-cap-p i18n" data-pt="Em 1934, Campos do Jordão já era o endereço mais desejado do Brasil. Hoje, o MC 1934 nasce para honrar essa herança, com gastronomia, memória e a convicção de que uma refeição extraordinária também faz parte da história de um lugar." data-en="In 1934, Campos do Jordão was already Brazil's most coveted address. Today, MC 1934 is born to honor that heritage — with gastronomy, memory and the conviction that an extraordinary meal is also part of a place's history.">Em 1934, Campos do Jordão já era o endereço mais desejado do Brasil. Hoje, o MC 1934 nasce para honrar essa herança, com gastronomia, memória e a convicção de que uma refeição extraordinária também faz parte da história de um lugar.</p>
       </div>
 
     </div><!-- .tl-chapters -->
@@ -1253,11 +1254,11 @@
   <div class="rest-txt">
     <span class="rest-tag ae">Campos do Jordão</span>
     <div class="rest-line ae" style="transition-delay:.08s"></div>
-    <h2 class="rest-h2 ae" style="transition-delay:.15s">
+    <h2 class="rest-h2 ae i18n" style="transition-delay:.15s" data-pt="Não é só um restaurante. É uma declaração de amor à cidade." data-en="Not just a restaurant. A declaration of love for the city.">
       Não é só um restaurante. É uma declaração de amor à cidade.
     </h2>
-    <p class="rest-p ae" style="transition-delay:.22s">O MC 1934 nasce para honrar a memória de Campos do Jordão, mas com os olhos postos no amanhã. Somos o ponto de encontro onde o respeito pelo passado da Mantiqueira se une à inovação da gastronomia contemporânea de inspiração italiana.</p>
-    <p class="rest-p ae" style="transition-delay:.28s">Resgatamos as histórias que construíram esta cidade para servir o próximo capítulo da sua história à mesa: um diálogo onde a técnica clássica da Itália eleva os ingredientes da nossa serra ao seu máximo potencial. Aqui, o tempo é celebrado e o sabor é um manifesto de identidade.</p>
+    <p class="rest-p ae i18n" style="transition-delay:.22s" data-pt="O MC 1934 nasce para honrar a memória de Campos do Jordão, mas com os olhos postos no amanhã. Somos o ponto de encontro onde o respeito pelo passado da Mantiqueira se une à inovação da gastronomia contemporânea de inspiração italiana." data-en="MC 1934 was born to honor the memory of Campos do Jordão, but with its eyes set on tomorrow. We are the meeting point where respect for the Mantiqueira's past unites with the innovation of contemporary Italian-inspired gastronomy.">O MC 1934 nasce para honrar a memória de Campos do Jordão, mas com os olhos postos no amanhã. Somos o ponto de encontro onde o respeito pelo passado da Mantiqueira se une à inovação da gastronomia contemporânea de inspiração italiana.</p>
+    <p class="rest-p ae i18n" style="transition-delay:.28s" data-pt="Resgatamos as histórias que construíram esta cidade para servir o próximo capítulo da sua história à mesa: um diálogo onde a técnica clássica da Itália eleva os ingredientes da nossa serra ao seu máximo potencial. Aqui, o tempo é celebrado e o sabor é um manifesto de identidade." data-en="We reclaim the stories that built this city to serve the next chapter of its history at the table: a dialogue where classical Italian technique elevates our mountain ingredients to their fullest potential. Here, time is celebrated and flavor is a manifesto of identity.">Resgatamos as histórias que construíram esta cidade para servir o próximo capítulo da sua história à mesa: um diálogo onde a técnica clássica da Itália eleva os ingredientes da nossa serra ao seu máximo potencial. Aqui, o tempo é celebrado e o sabor é um manifesto de identidade.</p>
     <div class="rest-water" aria-hidden="true">1934</div>
   </div>
   <div class="rest-foto ae" style="transition-delay:.2s">
@@ -1273,11 +1274,11 @@
   </div>
   <div class="chef-sep"></div>
   <div class="chef-txt">
-    <span class="chef-lbl ae">Chef Executivo</span>
+    <span class="chef-lbl ae i18n" data-pt="Chef Executivo" data-en="Executive Chef">Chef Executivo</span>
     <h2 class="chef-nome ae" style="transition-delay:.1s">André Boccato</h2>
     <span class="chef-script ae" style="transition-delay:.16s">la cucina italiana</span>
-    <h3 class="chef-h3 ae" style="transition-delay:.22s">A assinatura de quem entende que cozinhar é um ato de memória.</h3>
-    <p class="chef-p ae" style="transition-delay:.3s">
+    <h3 class="chef-h3 ae i18n" style="transition-delay:.22s" data-pt="A assinatura de quem entende que cozinhar é um ato de memória." data-en="The signature of one who understands that cooking is an act of memory.">A assinatura de quem entende que cozinhar é um ato de memória.</h3>
+    <p class="chef-p ae i18n" style="transition-delay:.3s" data-pt="André Boccato traz para o MC 1934 uma culinária que conecta a Itália, o Brasil e Campos do Jordão em uma só experiência. Um menu construído para surpreender, mas com a familiaridade de quem parece que já esteve aqui antes." data-en="André Boccato brings to MC 1934 a cuisine that connects Italy, Brazil and Campos do Jordão in a single experience. A menu built to surprise, yet with the familiarity of a place you feel you have always known.">
       André Boccato traz para o MC 1934 uma culinária que conecta a Itália, o Brasil e Campos do Jordão em uma só experiência. Um menu construído para surpreender, mas com a familiaridade de quem parece que já esteve aqui antes.
     </p>
   </div>
@@ -1286,9 +1287,9 @@
 <!-- ══ S5 O ESPAÇO ══ -->
 <section id="espaco">
   <div class="espaco-top">
-    <h2 class="espaco-h2 ae">Um espaço feito para durar na memória.</h2>
-    <p class="espaco-p ae" style="transition-delay:.12s">Mesas espaçosas. Sofás. Privacidade. Uma oliveira centenária que chegou para ficar. E um segundo andar, o Rooftop Ibiri, com uma vista que faz qualquer conversa parecer mais importante.</p>
-    <p class="espaco-p ae" style="transition-delay:.2s">O MC 1934 não é um lugar para passar. É um lugar para estar.</p>
+    <h2 class="espaco-h2 ae i18n" data-pt="Um espaço feito para durar na memória." data-en="A space made to last in memory.">Um espaço feito para durar na memória.</h2>
+    <p class="espaco-p ae i18n" style="transition-delay:.12s" data-pt="Mesas espaçosas. Sofás. Privacidade. Uma oliveira centenária que chegou para ficar. E um segundo andar, o Rooftop Ibiri, com uma vista que faz qualquer conversa parecer mais importante." data-en="Spacious tables. Sofas. Privacy. A century-old olive tree that came to stay. And a second floor, the Rooftop Ibiri, with a view that makes every conversation feel more meaningful.">Mesas espaçosas. Sofás. Privacidade. Uma oliveira centenária que chegou para ficar. E um segundo andar, o Rooftop Ibiri, com uma vista que faz qualquer conversa parecer mais importante.</p>
+    <p class="espaco-p ae i18n" style="transition-delay:.2s" data-pt="O MC 1934 não é um lugar para passar. É um lugar para estar." data-en="MC 1934 is not a place to pass through. It is a place to be.">O MC 1934 não é um lugar para passar. É um lugar para estar.</p>
   </div>
 
   <!-- GALERIA HORIZONTAL SCROLL-DRIVEN -->
@@ -1302,7 +1303,7 @@
       <div class="galeria-counter">
         <span id="galeriaCur">01</span>
         <span class="galeria-sep">/</span>
-        <span>08</span>
+        <span>22</span>
       </div>
 
       <!-- Bento grid 2 linhas -->
@@ -1312,45 +1313,45 @@
         <div class="galeria-foto tall" style="width:32vw">
           <img src="assets/imgs/mc-fachada.webp" alt="Fachada — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">I</span>
-          <div class="galeria-legenda"><span>Luz de tarde</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="Luz de tarde" data-en="Afternoon light">Luz de tarde</span></div>
         </div>
 
         <!-- COL 2 — dois halfs empilhados -->
         <div class="galeria-foto" style="width:44vw">
           <img src="assets/imgs/mc-burrata.webp" alt="Burrata com figos — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">II</span>
-          <div class="galeria-legenda"><span>Mesas e detalhes</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="Mesas e detalhes" data-en="Tables and details">Mesas e detalhes</span></div>
         </div>
         <div class="galeria-foto" style="width:44vw">
           <img src="assets/imgs/mc-massa.webp" alt="À mesa — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">III</span>
-          <div class="galeria-legenda"><span>À mesa</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="À mesa" data-en="At the table">À mesa</span></div>
         </div>
 
         <!-- COL 3 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:26vw">
           <img src="assets/imgs/mc-carpaccio.webp" alt="Carpaccio — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">IV</span>
-          <div class="galeria-legenda"><span>O prato</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O prato" data-en="The dish">O prato</span></div>
         </div>
 
         <!-- COL 4 — dois halfs empilhados -->
         <div class="galeria-foto" style="width:38vw">
           <img src="assets/imgs/mc-pizza.webp" alt="Pizza — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">V</span>
-          <div class="galeria-legenda"><span>O vinho</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O vinho" data-en="The wine">O vinho</span></div>
         </div>
         <div class="galeria-foto" style="width:38vw">
           <img src="assets/imgs/mc-azeite.webp" alt="O detalhe — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">VI</span>
-          <div class="galeria-legenda"><span>O detalhe</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O detalhe" data-en="The detail">O detalhe</span></div>
         </div>
 
         <!-- COL 5 — tall, span 2 rows -->
         <div class="galeria-foto tall" style="width:30vw">
           <img src="assets/imgs/mc-menu.webp" alt="Menu — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">VII</span>
-          <div class="galeria-legenda"><span>A oliveira centenária</span></div>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A oliveira centenária" data-en="The century-old olive tree">A oliveira centenária</span></div>
         </div>
 
         <!-- COL 6 — tall, span 2 rows -->
@@ -1358,6 +1359,94 @@
           <img src="assets/imgs/mc-terraco.webp" alt="Rooftop Ibiri — MC 1934" loading="lazy" decoding="async">
           <span class="galeria-ghost">VIII</span>
           <div class="galeria-legenda"><span>Rooftop Ibiri</span></div>
+        </div>
+
+        <!-- COL 7 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:34vw">
+          <img src="assets/imgs/img_2338_1_1x.webp" alt="O espaço — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">IX</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O espaço" data-en="The space">O espaço</span></div>
+        </div>
+
+        <!-- COL 8 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:42vw">
+          <img src="assets/imgs/img_2339_1_1x.webp" alt="A cozinha — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">X</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A cozinha" data-en="The kitchen">A cozinha</span></div>
+        </div>
+        <div class="galeria-foto" style="width:42vw">
+          <img src="assets/imgs/img_2352_1_1x.webp" alt="Os ingredientes — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XI</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="Os ingredientes" data-en="The ingredients">Os ingredientes</span></div>
+        </div>
+
+        <!-- COL 9 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:28vw">
+          <img src="assets/imgs/img_2377_1_1x.webp" alt="A sala — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XII</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A sala" data-en="The dining room">A sala</span></div>
+        </div>
+
+        <!-- COL 10 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:40vw">
+          <img src="assets/imgs/img_2455_1_1x.webp" alt="O ambiente — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XIII</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O ambiente" data-en="The ambiance">O ambiente</span></div>
+        </div>
+        <div class="galeria-foto" style="width:40vw">
+          <img src="assets/imgs/img_2473_1_1x.webp" alt="A textura — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XIV</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A textura" data-en="The texture">A textura</span></div>
+        </div>
+
+        <!-- COL 11 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:32vw">
+          <img src="assets/imgs/img_2604_1_1x.webp" alt="A experiência — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XV</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A experiência" data-en="The experience">A experiência</span></div>
+        </div>
+
+        <!-- COL 12 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:44vw">
+          <img src="assets/imgs/img_2676_1_1x.webp" alt="O encontro — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XVI</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O encontro" data-en="The gathering">O encontro</span></div>
+        </div>
+        <div class="galeria-foto" style="width:44vw">
+          <img src="assets/imgs/img_2757_1_1x.webp" alt="O ritual — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XVII</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O ritual" data-en="The ritual">O ritual</span></div>
+        </div>
+
+        <!-- COL 13 — tall, span 2 rows -->
+        <div class="galeria-foto tall" style="width:26vw">
+          <img src="assets/imgs/img_2815_1_1x.webp" alt="A noite — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XVIII</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A noite" data-en="The evening">A noite</span></div>
+        </div>
+
+        <!-- COL 14 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:38vw">
+          <img src="assets/imgs/img_2914_1_1x.webp" alt="Os sabores — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XIX</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="Os sabores" data-en="The flavors">Os sabores</span></div>
+        </div>
+        <div class="galeria-foto" style="width:38vw">
+          <img src="assets/imgs/img_3158_1_1x.webp" alt="A arte — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XX</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A arte" data-en="The craft">A arte</span></div>
+        </div>
+
+        <!-- COL 15 — dois halfs empilhados -->
+        <div class="galeria-foto" style="width:40vw">
+          <img src="assets/imgs/img_3168_1_1x.webp" alt="O jardim — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XXI</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="O jardim" data-en="The garden">O jardim</span></div>
+        </div>
+        <div class="galeria-foto" style="width:40vw">
+          <img src="assets/imgs/img_3173_1_1x.webp" alt="A memória — MC 1934" loading="lazy" decoding="async">
+          <span class="galeria-ghost">XXII</span>
+          <div class="galeria-legenda"><span class="i18n" data-pt="A memória" data-en="The memory">A memória</span></div>
         </div>
 
       </div><!-- /galeria-track -->
@@ -1381,7 +1470,7 @@
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">O momento em que você entra e entende que esse lugar foi pensado para você.</h2>
+        <h2 class="cena-h2 i18n" data-pt="O momento em que você entra e entende que esse lugar foi pensado para você." data-en="The moment you walk in and realize this place was made for you.">O momento em que você entra e entende que esse lugar foi pensado para você.</h2>
       </div>
     </div>
 
@@ -1391,7 +1480,7 @@
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">O aroma da cozinha antes mesmo de sentar.</h2>
+        <h2 class="cena-h2 i18n" data-pt="O aroma da cozinha antes mesmo de sentar." data-en="The scent of the kitchen before you even sit down.">O aroma da cozinha antes mesmo de sentar.</h2>
       </div>
     </div>
 
@@ -1401,8 +1490,8 @@
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">Uma massa que leva três dias para ser feita.</h2>
-        <p class="cena-p">Você vai saber na primeira garfada.</p>
+        <h2 class="cena-h2 i18n" data-pt="Uma massa que leva três dias para ser feita." data-en="A pasta that takes three days to make.">Uma massa que leva três dias para ser feita.</h2>
+        <p class="cena-p i18n" data-pt="Você vai saber na primeira garfada." data-en="You'll know with the first bite.">Você vai saber na primeira garfada.</p>
       </div>
     </div>
 
@@ -1412,64 +1501,60 @@
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">Um corte preparado no forno a carvão.</h2>
-        <p class="cena-p">Defumado por fora. Perfeito por dentro.</p>
+        <h2 class="cena-h2 i18n" data-pt="Um corte preparado no forno a carvão." data-en="A cut prepared in the charcoal oven.">Um corte preparado no forno a carvão.</h2>
+        <p class="cena-p i18n" data-pt="Defumado por fora. Perfeito por dentro." data-en="Smoked on the outside. Perfect within.">Defumado por fora. Perfeito por dentro.</p>
       </div>
     </div>
 
     <!-- CENA 5 -->
     <div class="cena pos-r" data-i="4">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-ozcbuse-31652926.webp')">
-        <!-- IMAGEM: Jazz ao vivo — banda Helena Sá no salão -->
+      <div class="cena-bg" style="background-image:url('assets/imgs/img_2670_1_1x.webp')">
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">O jazz da Helena Sá preenchendo o salão enquanto a noite esfria lá fora.</h2>
+        <h2 class="cena-h2 i18n" data-pt="O jazz da Helena Sá preenchendo o salão enquanto a noite esfria lá fora." data-en="Helena Sá's jazz filling the room as the night grows cold outside.">O jazz da Helena Sá preenchendo o salão enquanto a noite esfria lá fora.</h2>
       </div>
     </div>
 
     <!-- CENA 6 -->
     <div class="cena pos-r" data-i="5">
-      <div class="cena-bg" style="background-image:url('assets/imgs/mc-terraco.webp')">
+      <div class="cena-bg" style="background-image:url('assets/imgs/img_2914_1_1x.webp')">
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">Subir para o Rooftop Ibiri e ver Campos do Jordão do jeito que ela merece ser vista.</h2>
+        <h2 class="cena-h2 i18n" data-pt="Subir para o Rooftop Ibiri e ver Campos do Jordão do jeito que ela merece ser vista." data-en="Going up to Rooftop Ibiri and seeing Campos do Jordão the way it deserves to be seen.">Subir para o Rooftop Ibiri e ver Campos do Jordão do jeito que ela merece ser vista.</h2>
       </div>
     </div>
 
     <!-- CENA 7 -->
     <div class="cena pos-c" data-i="6">
-      <div class="cena-bg" style="background-image:url('assets/imgs/pexels-polina-tankilevitch-4518883.webp')">
-        <!-- IMAGEM: Café chegando à mesa — fim da noite, momento de pausa -->
+      <div class="cena-bg" style="background-image:url('assets/imgs/img_2815_1_1x.webp')">
       </div>
       <div class="cena-overlay"></div>
       <div class="cena-body">
-        <h2 class="cena-h2">Perceber, quando o café chega, que você não quer que a noite acabe.</h2>
+        <h2 class="cena-h2 i18n" data-pt="Perceber, quando o café chega, que você não quer que a noite acabe." data-en="Realizing, when the coffee arrives, that you don't want the night to end.">Perceber, quando o café chega, que você não quer que a noite acabe.</h2>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══ S7 INAUGURAÇÃO ══ -->
+<!-- ══ S7 CTA RESERVA ══ -->
 <section id="inauguracao">
   <div class="inau-bg">
     <img src="assets/imgs/mc-fachada.webp" alt="">
   </div>
   <div class="inau-inner">
     <div class="inau-orn ae"></div>
-    <h2 class="inau-h2 ae" style="transition-delay:.1s">2 de <span class="dest">junho</span>.</h2>
-    <p class="inau-h2-sub ae" style="transition-delay:.18s">Campos do Jordão ganha um novo endereço.</p>
-    <span class="inau-script ae" style="transition-delay:.24s">Massa I Carni</span>
-    <p class="inau-p ae" style="transition-delay:.3s">
-      A inauguração do MC 1934 acontece no início de <span class="dest">junho</span>, com <span class="dest">jazz</span> ao vivo, casa cheia e uma noite que vai entrar para a história da cidade, assim como tudo o que foi construído aqui com cuidado e intenção.
+    <span class="inau-script ae" style="transition-delay:.1s">Massa I Carni</span>
+    <h2 class="inau-h2 ae i18n" style="transition-delay:.18s; font-size: clamp(36px,5vw,72px);" data-pt="Reserve sua mesa." data-en="Reserve your table.">Reserve sua mesa.</h2>
+    <p class="inau-p ae i18n" style="transition-delay:.3s" data-pt="Uma experiência gastronômica italiana em Campos do Jordão, na Serra da Mantiqueira. Mesas espaçosas, cardápio autoral e o Rooftop Ibiri com vista para a cidade." data-en="An Italian gastronomic experience in Campos do Jordão, in the Serra da Mantiqueira. Spacious tables, an original menu, and the Rooftop Ibiri overlooking the city.">
+      Uma experiência gastronômica italiana em Campos do Jordão, na Serra da Mantiqueira. Mesas espaçosas, cardápio autoral e o Rooftop Ibiri com vista para a cidade.
     </p>
-    <p class="inau-p ae" style="transition-delay:.36s">As reservas são limitadas.</p>
-    <a href="#" class="btn-solid ae" style="transition-delay:.44s" onclick="openModal();return false;">
-      <span>Quero garantir minha mesa</span>
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="btn-solid ae" style="transition-delay:.42s" target="_blank" rel="noopener">
+      <span class="i18n" data-pt="Reservar minha mesa" data-en="Reserve my table">Reservar minha mesa</span>
     </a>
-    <span class="micro ae" style="transition-delay:.52s">Pré-reserva gratuita. Confirmação enviada por WhatsApp.</span>
+    <span class="micro ae i18n" style="transition-delay:.52s" data-pt="Confirmação enviada por WhatsApp." data-en="Confirmation sent via WhatsApp.">Confirmação enviada por WhatsApp.</span>
   </div>
 </section>
 
@@ -1479,17 +1564,17 @@
     <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC Dezenove34">
   </div>
   <span class="rod-script">Massa I Carni</span>
-  <h2 class="rod-h2">MC 1934. Massa, Carne e Memória.</h2>
-  <p class="rod-p">Campos do Jordão, Serra da Mantiqueira. Uma experiência para quem acredita que uma boa refeição é também um ato de cultura.</p>
+  <h2 class="rod-h2 i18n" data-pt="MC 1934. Massa, Carne e Memória." data-en="MC 1934. Pasta, Meat and Memory.">MC 1934. Massa, Carne e Memória.</h2>
+  <p class="rod-p i18n" data-pt="Campos do Jordão, Serra da Mantiqueira. Uma experiência para quem acredita que uma boa refeição é também um ato de cultura." data-en="Campos do Jordão, Serra da Mantiqueira. An experience for those who believe that a great meal is also an act of culture.">Campos do Jordão, Serra da Mantiqueira. Uma experiência para quem acredita que uma boa refeição é também um ato de cultura.</p>
   <div>
-    <a href="#" class="btn-ghost" onclick="openModal();return false;" style="padding:12px 36px;"><span>Reservar minha mesa</span></a>
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="btn-ghost" style="padding:12px 36px;" target="_blank" rel="noopener"><span class="i18n" data-pt="Reservar minha mesa" data-en="Reserve my table">Reservar minha mesa</span></a>
   </div>
   <ul class="rod-nav">
     <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
     <li><span class="rod-sep">·</span></li>
     <li><a href="#" target="_blank" rel="noopener">WhatsApp</a></li>
     <li><span class="rod-sep">·</span></li>
-    <li><a href="#" target="_blank" rel="noopener">Localização</a></li>
+    <li><a href="#" target="_blank" rel="noopener" class="i18n" data-pt="Localização" data-en="Location">Localização</a></li>
   </ul>
   <p class="rod-copy">© 2026 MC Dezenove34 — Campos do Jordão, SP</p>
 </footer>
@@ -1500,12 +1585,12 @@
     <button class="modal-x" id="modalX" aria-label="Fechar"></button>
 
     <div id="modalForm">
-      <h3 class="modal-h3" id="modalTitle">Garanta sua mesa</h3>
-      <p class="modal-sub">Pré-reserva gratuita · Confirmação por WhatsApp</p>
+      <h3 class="modal-h3 i18n" id="modalTitle" data-pt="Garanta sua mesa" data-en="Reserve your table">Garanta sua mesa</h3>
+      <p class="modal-sub i18n" data-pt="Pré-reserva gratuita · Confirmação por WhatsApp" data-en="Free reservation · Confirmation via WhatsApp">Pré-reserva gratuita · Confirmação por WhatsApp</p>
       <form id="resForm" novalidate>
         <div class="f-grp">
-          <label class="f-lbl" for="fNome">Nome completo</label>
-          <input class="f-inp" type="text" id="fNome" name="nome" required placeholder="Seu nome">
+          <label class="f-lbl i18n" for="fNome" data-pt="Nome completo" data-en="Full name">Nome completo</label>
+          <input class="f-inp" type="text" id="fNome" name="nome" required placeholder="Seu nome" data-placeholder-pt="Seu nome" data-placeholder-en="Your name">
         </div>
         <div class="f-grp">
           <label class="f-lbl" for="fWa">WhatsApp</label>
@@ -1513,21 +1598,21 @@
         </div>
         <div class="f-duo">
           <div class="f-grp">
-            <label class="f-lbl" for="fData">Data pretendida</label>
+            <label class="f-lbl i18n" for="fData" data-pt="Data pretendida" data-en="Preferred date">Data pretendida</label>
             <input class="f-inp" type="date" id="fData" name="data" required>
           </div>
           <div class="f-grp">
-            <label class="f-lbl" for="fPax">Pessoas</label>
+            <label class="f-lbl i18n" for="fPax" data-pt="Pessoas" data-en="Guests">Pessoas</label>
             <input class="f-inp" type="number" id="fPax" name="pessoas" min="1" max="20" required placeholder="2">
           </div>
         </div>
-        <button type="submit" class="modal-btn"><span>Confirmar pré-reserva</span></button>
+        <button type="submit" class="modal-btn"><span class="i18n" data-pt="Confirmar pré-reserva" data-en="Confirm reservation">Confirmar pré-reserva</span></button>
       </form>
     </div>
 
     <div id="modalOk" class="modal-ok">
-      <p class="modal-ok-h">Sua mesa está reservada.</p>
-      <p class="modal-ok-p">Em breve você receberá a confirmação pelo WhatsApp.<br>Nos vemos em 2 de junho.</p>
+      <p class="modal-ok-h i18n" data-pt="Sua mesa está reservada." data-en="Your table is reserved.">Sua mesa está reservada.</p>
+      <p class="modal-ok-p i18n" data-pt="Em breve você receberá a confirmação pelo WhatsApp.&lt;br&gt;Nos vemos em 2 de junho." data-en="You will soon receive your confirmation via WhatsApp.&lt;br&gt;We look forward to seeing you.">Em breve você receberá a confirmação pelo WhatsApp.<br>Nos vemos em 2 de junho.</p>
     </div>
   </div>
 </div>
@@ -1731,9 +1816,10 @@ initST('st2', 7, 'prog2');
 })();
 
 /* ── 06. MODAL ── */
+var WA_URL = 'https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934.';
 var modal = document.getElementById('modal');
-function openModal(){ modal.classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+function openModal(){ window.open(WA_URL, '_blank', 'noopener'); }
+function closeModal(){}
 
 (function(){
   var x    = document.getElementById('modalX');
@@ -1797,6 +1883,9 @@ function closeModal(){ modal.classList.remove('open'); document.body.style.overf
     document.documentElement.lang = en ? 'en' : 'pt-BR';
     document.querySelectorAll('.i18n[data-pt][data-en]').forEach(function(el){
       el.innerHTML = en ? el.dataset.en : el.dataset.pt;
+    });
+    document.querySelectorAll('[data-placeholder-pt][data-placeholder-en]').forEach(function(el){
+      el.placeholder = en ? el.dataset.placeholderEn : el.dataset.placeholderPt;
     });
   }
 
