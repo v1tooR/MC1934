@@ -776,15 +776,15 @@
   /* Foto box legacy — mantido para cursor JS */
   .foto-box { overflow: hidden; position: relative; }
 
-  /* ─── 10. INAUGURAÇÃO ─── */
-  #inauguracao {
+  /* ─── 10. CTA RESERVA ─── */
+  #cta-reserva {
     background: var(--preto-quente);
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center;
     padding: var(--pv-desk) var(--ph-desk);
     position: relative; overflow: hidden;
   }
-  #inauguracao::before {
+  #cta-reserva::before {
     content: '';
     position: absolute; inset: 0; pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
@@ -1074,7 +1074,7 @@
     #st2 .pos-r .cena-body { left: var(--ph-mob); right: var(--ph-mob); text-align: left; }
     .prog-lat { right: 16px; }
 
-    #inauguracao { padding: var(--pv-mob) var(--ph-mob); }
+    #cta-reserva { padding: var(--pv-mob) var(--ph-mob); }
     .btn-ghost, .btn-solid { width: 100%; text-align: center; padding: 18px 24px; }
     footer { padding: 56px var(--ph-mob) 40px; }
     .modal-box { padding: 40px 24px; }
@@ -1537,7 +1537,7 @@
 </div>
 
 <!-- ══ S7 CTA RESERVA ══ -->
-<section id="inauguracao">
+<section id="cta-reserva">
   <div class="inau-bg">
     <img src="assets/imgs/mc-fachada.webp" alt="">
   </div>
@@ -1576,14 +1576,14 @@
   <p class="rod-copy">© 2026 MC Dezenove34 — Campos do Jordão, SP</p>
 </footer>
 
-<!-- MODAL DE PRÉ-RESERVA -->
+<!-- MODAL RESERVA -->
 <div id="modal" class="modal-bg" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <button class="modal-x" id="modalX" aria-label="Fechar"></button>
 
     <div id="modalForm">
-      <h3 class="modal-h3 i18n" id="modalTitle" data-pt="Garanta sua mesa" data-en="Reserve your table">Garanta sua mesa</h3>
-      <p class="modal-sub i18n" data-pt="Pré-reserva gratuita · Confirmação por WhatsApp" data-en="Free reservation · Confirmation via WhatsApp">Pré-reserva gratuita · Confirmação por WhatsApp</p>
+      <h3 class="modal-h3 i18n" id="modalTitle" data-pt="Reserve sua mesa" data-en="Reserve your table">Reserve sua mesa</h3>
+      <p class="modal-sub i18n" data-pt="Reserva · Confirmação por WhatsApp" data-en="Reservation · Confirmation via WhatsApp">Reserva · Confirmação por WhatsApp</p>
       <form id="resForm" novalidate>
         <div class="f-grp">
           <label class="f-lbl i18n" for="fNome" data-pt="Nome completo" data-en="Full name">Nome completo</label>
@@ -1603,13 +1603,13 @@
             <input class="f-inp" type="number" id="fPax" name="pessoas" min="1" max="20" required placeholder="2">
           </div>
         </div>
-        <button type="submit" class="modal-btn"><span class="i18n" data-pt="Confirmar pré-reserva" data-en="Confirm reservation">Confirmar pré-reserva</span></button>
+        <button type="submit" class="modal-btn"><span class="i18n" data-pt="Confirmar reserva" data-en="Confirm reservation">Confirmar reserva</span></button>
       </form>
     </div>
 
     <div id="modalOk" class="modal-ok">
       <p class="modal-ok-h i18n" data-pt="Sua mesa está reservada." data-en="Your table is reserved.">Sua mesa está reservada.</p>
-      <p class="modal-ok-p i18n" data-pt="Em breve você receberá a confirmação pelo WhatsApp.&lt;br&gt;Nos vemos em 2 de junho." data-en="You will soon receive your confirmation via WhatsApp.&lt;br&gt;We look forward to seeing you.">Em breve você receberá a confirmação pelo WhatsApp.<br>Nos vemos em 2 de junho.</p>
+      <p class="modal-ok-p i18n" data-pt="Em breve você receberá a confirmação pelo WhatsApp." data-en="You will soon receive your confirmation via WhatsApp.">Em breve você receberá a confirmação pelo WhatsApp.</p>
     </div>
   </div>
 </div>
@@ -1859,7 +1859,7 @@ function closeModal(){}
           form.reset(); closeModal();
         }, 4000);
       } catch(err) {
-        alert('Não foi possível salvar sua pré-reserva agora. Tente novamente em instantes.');
+        alert('Não foi possível enviar sua reserva agora. Tente novamente em instantes.');
       } finally {
         if(btn){
           btn.disabled = false;
