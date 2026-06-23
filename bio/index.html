@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC 1934 — Massa I Carni · Campos do Jordão</title>
+  <meta name="description" content="MC 1934 — Restaurante italiano contemporâneo em Campos do Jordão, na Serra da Mantiqueira. Chef André Boccato, massas artesanais, carnes nobres e o Rooftop Ibiri.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dezenove34.com.br/bio.html">
+  <meta property="og:title" content="MC 1934 — Massa I Carni">
+  <meta property="og:description" content="Gastronomia italiana contemporânea em Campos do Jordão. Rooftop Ibiri com vista para a Serra da Mantiqueira.">
+  <meta property="og:image" content="https://dezenove34.com.br/assets/imgs/compartilhamento.webp">
+  <meta property="og:url" content="https://dezenove34.com.br/bio.html">
+  <meta name="theme-color" content="#1A1210">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/1934-preto.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+  <style>
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreLight.ttf') format('truetype');
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Palmore Vintage';
+    src: url('assets/fonts/palmore-vintage/PalmoreRegular.ttf') format('truetype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'The Camellia';
+    src: url('assets/fonts/the-camellia-font/TheCamellia-YqjDj.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+
+  :root {
+    --c:   #B22222;
+    --cd:  #7A1515;
+    --m:   #FFEDCE;
+    --b:   #1A1210;
+    --cv:  #2C2220;
+    --ow:  #FDF8F0;
+    --fd:  'Palmore Vintage', Georgia, serif;
+    --fc:  'Lato', Helvetica, sans-serif;
+    --fs:  'The Camellia', cursive;
+    --ease-out: cubic-bezier(.22,.61,.36,1);
+    --ease-card: cubic-bezier(.65,0,.35,1);
+    --gap: 10px;
+    --r: 2px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--b);
+    color: var(--m);
+    font-family: var(--fc);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100dvh;
+    cursor: none;
+  }
+  a { text-decoration: none; color: inherit; }
+  * { cursor: none; }
+
+  /* grain overlay */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    z-index: 9997; pointer-events: none;
+    opacity: .038;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── CURSOR ── */
+  .cursor-dot {
+    position: fixed; width: 7px; height: 7px;
+    background: var(--ow); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    mix-blend-mode: difference;
+    will-change: left, top;
+  }
+  .cursor-ring {
+    position: fixed; width: 30px; height: 30px;
+    border: 1px solid rgba(253,248,240,.5); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: width .2s ease, height .2s ease, border-color .2s ease;
+    mix-blend-mode: difference;
+    will-change: left, top;
+  }
+  body.hov .cursor-dot  { transform: translate(-50%,-50%) scale(2.5); }
+  body.hov .cursor-ring { width: 52px; height: 52px; border-color: rgba(178,34,34,.8); }
+
+  /* ── ENTRANCE ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  .au { animation: fadeUp .9s var(--ease-out) both; }
+  .au-1 { animation-delay: .1s; }
+  .au-2 { animation-delay: .22s; }
+  .au-3 { animation-delay: .34s; }
+  .au-4 { animation-delay: .46s; }
+  .au-5 { animation-delay: .58s; }
+  .au-6 { animation-delay: .7s; }
+  .au-7 { animation-delay: .82s; }
+  .au-8 { animation-delay: .94s; }
+
+  /* ── LAYOUT ── */
+  .bio {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 0 56px;
+    position: relative;
+  }
+
+  /* ── HEADER BRAND ── */
+  .brand {
+    padding: 52px 28px 36px;
+    text-align: center;
+    position: relative;
+  }
+  .brand-logo {
+    width: 160px; margin: 0 auto 18px;
+  }
+  .brand-logo img {
+    width: 100%; height: auto; display: block;
+    filter: brightness(0) invert(1);
+    opacity: .92;
+  }
+  .brand-script {
+    font-family: var(--fs);
+    font-size: 28px;
+    color: var(--c);
+    display: block;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .brand-loc {
+    font-family: var(--fc);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .35em; text-transform: uppercase;
+    color: var(--m); opacity: .4;
+    margin-bottom: 28px;
+  }
+  .ornament {
+    display: flex; align-items: center;
+    justify-content: center; gap: 12px;
+    margin-bottom: 22px;
+  }
+  .orn-line {
+    display: block; height: 1px; width: 48px;
+    background: var(--c); opacity: .35;
+    transform-origin: center;
+    animation: scaleIn .8s var(--ease-out) .3s both;
+  }
+  .orn-diamond {
+    display: block; width: 5px; height: 5px;
+    background: var(--c);
+    transform: rotate(45deg);
+    animation: fadeIn .5s ease .7s both;
+  }
+  .brand-quote {
+    font-family: var(--fd);
+    font-style: italic; font-weight: 300;
+    font-size: 18px; line-height: 1.45;
+    color: var(--m); opacity: .78;
+    padding: 0 8px;
+    letter-spacing: .01em;
+  }
+  .brand-quote::before, .brand-quote::after { content: none; }
+
+  /* ── TRAITS ── */
+  .traits {
+    display: flex; align-items: center;
+    justify-content: center; gap: 10px;
+    padding: 0 28px 32px;
+    flex-wrap: wrap;
+  }
+  .trait {
+    font-family: var(--fc);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase;
+    color: var(--m); opacity: .38;
+  }
+  .trait-sep { color: var(--c); opacity: .5; font-size: 12px; }
+
+  /* ── CARDS GRID ── */
+  .cards {
+    padding: 0 var(--gap);
+    display: flex; flex-direction: column; gap: var(--gap);
+  }
+
+  /* duo row */
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+  }
+
+  /* base card */
+  .card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r);
+    background: var(--cv);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card-img {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+    transition: transform 1s var(--ease-card),
+                filter .6s ease;
+    will-change: transform;
+    filter: brightness(.82) saturate(.9);
+  }
+  .card:hover .card-img img,
+  .card:focus-visible .card-img img {
+    transform: scale(1.07);
+    filter: brightness(.92) saturate(1);
+  }
+
+  /* gradient overlay */
+  .card::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to top,
+      rgba(26,18,16,.93) 0%,
+      rgba(26,18,16,.35) 55%,
+      rgba(26,18,16,.08) 100%
+    );
+    transition: opacity .5s ease;
+  }
+  .card:hover::before { opacity: .85; }
+
+  /* card body (text content) */
+  .card-body {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+  }
+  .card-label {
+    font-family: var(--fc);
+    font-size: 8.5px; font-weight: 700;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--c);
+    display: block; margin-bottom: 6px;
+  }
+  .card-title {
+    font-family: var(--fd);
+    font-style: italic; font-weight: 400;
+    color: var(--m);
+    line-height: .92;
+    letter-spacing: -.01em;
+  }
+  .card-sub {
+    font-family: var(--fc);
+    font-weight: 400; font-size: 11px;
+    color: var(--m); opacity: .6;
+    margin-top: 5px; line-height: 1.4;
+  }
+
+  /* arrow chip */
+  .card-arrow {
+    position: absolute; z-index: 2;
+    bottom: 0; right: 0;
+    width: 44px; height: 44px;
+    background: var(--c);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: #fff;
+    transform: translate(100%, 100%);
+    transition: transform .45s var(--ease-card);
+  }
+  .card:hover .card-arrow,
+  .card:focus-visible .card-arrow { transform: translate(0, 0); }
+
+  /* card-full sizing */
+  .card-full { height: 280px; }
+  .card-full .card-body { padding: 20px 20px 24px; height: 100%; }
+  .card-full .card-title { font-size: 30px; }
+
+  /* card-half sizing */
+  .card-half { height: 200px; }
+  .card-half .card-body { padding: 14px 14px 18px; height: 100%; }
+  .card-half .card-title { font-size: 22px; }
+  .card-half .card-sub { font-size: 10px; }
+
+  /* card-wide (tall full-width) */
+  .card-wide { height: 260px; }
+  .card-wide .card-body { padding: 20px 20px 24px; height: 100%; }
+  .card-wide .card-title { font-size: 28px; }
+
+  /* highlight stripe on top */
+  .card-stripe::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--c);
+    z-index: 3;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .55s var(--ease-card);
+  }
+  .card-stripe:hover::after { transform: scaleX(1); }
+
+  /* featured card (reserva) — has pill badge */
+  .badge {
+    position: absolute; z-index: 3;
+    top: 18px; right: 18px;
+    padding: 5px 12px;
+    border: 1px solid rgba(178,34,34,.55);
+    background: rgba(26,18,16,.7);
+    backdrop-filter: blur(6px);
+    font-family: var(--fc); font-size: 9px; font-weight: 700;
+    letter-spacing: .25em; text-transform: uppercase;
+    color: var(--m); opacity: .85;
+  }
+
+  /* ── HISTORIA ── */
+  .historia {
+    margin: 40px var(--gap) 0;
+    padding: 32px 24px;
+    border: 1px solid rgba(178,34,34,.18);
+    position: relative;
+    overflow: hidden;
+  }
+  .historia::before {
+    content: '1934';
+    position: absolute;
+    right: -8px; bottom: -24px;
+    font-family: var(--fd); font-weight: 700;
+    font-size: 120px; line-height: 1;
+    color: rgba(178,34,34,.055);
+    pointer-events: none; user-select: none;
+    letter-spacing: -.03em;
+  }
+  .historia-eyebrow {
+    font-family: var(--fc); font-size: 9px; font-weight: 700;
+    letter-spacing: .35em; text-transform: uppercase;
+    color: var(--c); display: block; margin-bottom: 14px;
+  }
+  .historia-h {
+    font-family: var(--fd);
+    font-style: italic; font-weight: 300;
+    font-size: 22px; line-height: 1.2;
+    color: var(--m); margin-bottom: 14px;
+  }
+  .historia-p {
+    font-family: var(--fc); font-size: 13px;
+    color: var(--m); opacity: .62; line-height: 1.8;
+  }
+  .historia-p + .historia-p { margin-top: 10px; }
+
+  /* ── PILARES ── */
+  .pilares {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 10px var(--gap) 0;
+    background: rgba(178,34,34,.15);
+  }
+  .pilar {
+    background: var(--b);
+    padding: 22px 14px;
+    text-align: center;
+  }
+  .pilar-num {
+    font-family: var(--fd);
+    font-style: italic; font-weight: 400;
+    font-size: 28px; color: var(--c);
+    display: block; margin-bottom: 6px;
+    line-height: 1;
+  }
+  .pilar-lbl {
+    font-family: var(--fc); font-size: 9px; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--m); opacity: .45;
+  }
+
+  /* ── SOCIAL ── */
+  .social {
+    padding: 40px var(--gap) 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .soc-btn {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    border: 1px solid rgba(255,237,206,.1);
+    background: transparent;
+    font-family: var(--fc); font-size: 11px; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--m); opacity: .7;
+    transition: opacity .3s ease, border-color .3s ease, background .3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .soc-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(178,34,34,.08);
+    transform: translateX(-101%);
+    transition: transform .45s var(--ease-card);
+  }
+  .soc-btn:hover { opacity: 1; border-color: rgba(178,34,34,.4); }
+  .soc-btn:hover::after { transform: translateX(0); }
+  .soc-icon {
+    width: 18px; height: 18px; flex-shrink: 0;
+    color: var(--c);
+    position: relative; z-index: 1;
+  }
+  .soc-btn span { position: relative; z-index: 1; }
+  .soc-btn .soc-arr {
+    margin-left: auto; font-size: 14px;
+    color: var(--c); opacity: .6;
+    position: relative; z-index: 1;
+  }
+
+  /* ── FOOTER ── */
+  .bio-footer {
+    margin-top: 48px;
+    padding: 24px var(--gap);
+    text-align: center;
+    border-top: 1px solid rgba(178,34,34,.12);
+  }
+  .bio-footer-logo {
+    width: 100px; margin: 0 auto 10px;
+  }
+  .bio-footer-logo img {
+    width: 100%; height: auto; display: block;
+    filter: brightness(0) invert(1); opacity: .2;
+  }
+  .bio-footer-copy {
+    font-family: var(--fc); font-size: 10px;
+    color: var(--m); opacity: .2;
+    letter-spacing: .1em;
+  }
+
+  /* ── SCROLL PROMPT ── */
+  .scroll-hint {
+    display: flex; align-items: center;
+    justify-content: center; gap: 10px;
+    padding: 0 0 12px;
+    animation: fadeIn 1s ease 1.5s both;
+  }
+  .scroll-line {
+    width: 32px; height: 1px;
+    background: var(--m); opacity: .2;
+  }
+  .scroll-txt {
+    font-family: var(--fc); font-size: 8px; font-weight: 700;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--m); opacity: .3;
+  }
+
+  /* ── MOBILE FOCUS ── */
+  @media (max-width: 400px) {
+    .brand { padding: 40px 20px 28px; }
+    .brand-quote { font-size: 16px; }
+    .card-full { height: 250px; }
+    .card-half { height: 180px; }
+    .card-wide { height: 230px; }
+  }
+
+  @media (hover: none) {
+    /* Touch devices: show arrow always */
+    .card-arrow { transform: translate(0,0) !important; }
+    body { cursor: auto; }
+    * { cursor: auto; }
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- cursor (desktop) -->
+<div class="cursor-dot" id="cd"></div>
+<div class="cursor-ring" id="cr"></div>
+
+<div class="bio">
+
+  <!-- ── BRAND HEADER ── -->
+  <header class="brand">
+    <div class="brand-logo au au-1">
+      <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC 1934 — Massa I Carni">
+    </div>
+    <span class="brand-script au au-2">Massa I Carni</span>
+    <p class="brand-loc au au-3">· Campos do Jordão · Serra da Mantiqueira ·</p>
+    <div class="ornament au au-4">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+    <blockquote class="brand-quote au au-5">
+      Uma cozinha italiana nascida entre pinheiros e montanhas.
+    </blockquote>
+  </header>
+
+  <!-- ── TRAITS ── -->
+  <div class="traits au au-6">
+    <span class="trait">Massas artesanais</span>
+    <span class="trait-sep">·</span>
+    <span class="trait">Carnes nobres</span>
+    <span class="trait-sep">·</span>
+    <span class="trait">Rooftop</span>
+    <span class="trait-sep">·</span>
+    <span class="trait">Chef Boccato</span>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-line"></span>
+    <span class="scroll-txt">Explore</span>
+    <span class="scroll-line"></span>
+  </div>
+
+  <!-- ── CARDS ── -->
+  <div class="cards au au-7">
+
+    <!-- 1. RESERVAR MESA — full width -->
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="card card-full card-stripe" target="_blank" rel="noopener" aria-label="Reservar mesa pelo WhatsApp">
+      <div class="card-img">
+        <img src="assets/imgs/mc-interior.webp" alt="Interior do restaurante MC 1934">
+      </div>
+      <span class="badge">WhatsApp</span>
+      <div class="card-body">
+        <span class="card-label">Gastronomia italiana</span>
+        <h2 class="card-title">Reserve<br>sua mesa</h2>
+        <p class="card-sub">Confirmação rápida pelo WhatsApp</p>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 2. MASSAS + CARNES — duo -->
+    <div class="duo">
+      <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20card%C3%A1pio%20de%20massas%20do%20MC%201934." class="card card-half card-stripe" target="_blank" rel="noopener" aria-label="Massas artesanais">
+        <div class="card-img">
+          <img src="assets/imgs/mc-massa.webp" alt="Massas artesanais MC 1934">
+        </div>
+        <div class="card-body">
+          <span class="card-label">Primo Piatto</span>
+          <h2 class="card-title">Massas</h2>
+          <p class="card-sub">Artesanais</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20card%C3%A1pio%20de%20carnes%20do%20MC%201934." class="card card-half card-stripe" target="_blank" rel="noopener" aria-label="Carnes nobres">
+        <div class="card-img">
+          <img src="assets/imgs/mc-carne.webp" alt="Carnes nobres MC 1934">
+        </div>
+        <div class="card-body">
+          <span class="card-label">Secondo Piatto</span>
+          <h2 class="card-title">Carnes</h2>
+          <p class="card-sub">Nobres</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+
+    <!-- 3. ROOFTOP IBIRI — full width -->
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Rooftop%20Ibiri%20do%20MC%201934." class="card card-wide card-stripe" target="_blank" rel="noopener" aria-label="Rooftop Ibiri">
+      <div class="card-img">
+        <img src="assets/imgs/mc-terraco.webp" alt="Rooftop Ibiri — MC 1934" style="object-position: center 30%;">
+      </div>
+      <span class="badge">4º Andar</span>
+      <div class="card-body">
+        <span class="card-label">Vista panorâmica</span>
+        <h2 class="card-title">Rooftop<br>Ibiri</h2>
+        <p class="card-sub">Campos do Jordão lá embaixo</p>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 4. CHEF + CASA — duo -->
+    <div class="duo">
+      <a href="https://dezenove34.com.br/" class="card card-half card-stripe" aria-label="Chef André Boccato">
+        <div class="card-img">
+          <img src="assets/imgs/mc-chef-acao.webp" alt="Chef André Boccato" style="object-position: center top;">
+        </div>
+        <div class="card-body">
+          <span class="card-label">Chef Executivo</span>
+          <h2 class="card-title">André<br>Boccato</h2>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a href="https://dezenove34.com.br/" class="card card-half card-stripe" aria-label="A casa — MC 1934">
+        <div class="card-img">
+          <img src="assets/imgs/mc-fachada.webp" alt="Fachada MC 1934">
+        </div>
+        <div class="card-body">
+          <span class="card-label">MC 1934</span>
+          <h2 class="card-title">A<br>Casa</h2>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+
+    <!-- 5. BURRATA / DESTAQUE — full width -->
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20MC%201934." class="card card-full card-stripe" target="_blank" rel="noopener" aria-label="Ver cardápio completo">
+      <div class="card-img">
+        <img src="assets/imgs/mc-burrata.webp" alt="Burrata — MC 1934" style="object-position: center 40%;">
+      </div>
+      <div class="card-body">
+        <span class="card-label">Entradas · Antipasto</span>
+        <h2 class="card-title">Cardápio<br>autoral</h2>
+        <p class="card-sub">Ingredientes da Serra da Mantiqueira</p>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- ── PILARES ── -->
+  <div class="pilares au au-8">
+    <div class="pilar">
+      <span class="pilar-num">I</span>
+      <span class="pilar-lbl">Massa</span>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">II</span>
+      <span class="pilar-lbl">Carni</span>
+    </div>
+    <div class="pilar">
+      <span class="pilar-num">III</span>
+      <span class="pilar-lbl">Memória</span>
+    </div>
+  </div>
+
+  <!-- ── HISTORIA ── -->
+  <section class="historia au au-8">
+    <span class="historia-eyebrow">Nossa história</span>
+    <h2 class="historia-h">Da Serra ao prato — uma história de raízes.</h2>
+    <p class="historia-p">O MC 1934 nasce em Campos do Jordão como uma homenagem ao espírito que fundou a cidade — pioneiro, acolhedor, com alma italiana. O nome carrega o ano em que a Serra da Mantiqueira abriu suas portas para o mundo.</p>
+    <p class="historia-p">O Chef André Boccato assina um cardápio autoral de massas artesanais e cortes nobres, com ingredientes que dialogam com a paisagem ao redor. No 4º andar, o Rooftop Ibiri oferece a cidade como cenário.</p>
+  </section>
+
+  <!-- ── SOCIAL LINKS ── -->
+  <nav class="social au au-8" aria-label="Links sociais">
+
+    <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934." class="soc-btn" target="_blank" rel="noopener">
+      <svg class="soc-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span>Reservar pelo WhatsApp</span>
+      <span class="soc-arr">↗</span>
+    </a>
+
+    <a href="https://instagram.com" class="soc-btn" target="_blank" rel="noopener">
+      <svg class="soc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Instagram</span>
+      <span class="soc-arr">↗</span>
+    </a>
+
+    <a href="https://maps.google.com/?q=Campos+do+Jordão+SP+Brasil" class="soc-btn" target="_blank" rel="noopener">
+      <svg class="soc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span>Como chegar · Campos do Jordão</span>
+      <span class="soc-arr">↗</span>
+    </a>
+
+    <a href="https://dezenove34.com.br/" class="soc-btn">
+      <svg class="soc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>Site oficial</span>
+      <span class="soc-arr">↗</span>
+    </a>
+
+  </nav>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bio-footer">
+    <div class="bio-footer-logo">
+      <img src="assets/logo/DEZENOVE34 PRETO.svg" alt="MC 1934">
+    </div>
+    <p class="bio-footer-copy">© 2026 MC 1934 · Campos do Jordão, SP</p>
+  </footer>
+
+</div>
+
+<script>
+/* cursor */
+(function(){
+  var d = document.getElementById('cd');
+  var r = document.getElementById('cr');
+  if(!d || window.matchMedia('(hover: none)').matches) return;
+  var mx=0,my=0,ax=0,ay=0;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX; my=e.clientY;
+    d.style.left=mx+'px'; d.style.top=my+'px';
+  });
+  function tick(){ ax+=(mx-ax)*.1; ay+=(my-ay)*.1; r.style.left=ax+'px'; r.style.top=ay+'px'; requestAnimationFrame(tick); }
+  tick();
+  document.querySelectorAll('a,.soc-btn').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ document.body.classList.add('hov'); });
+    el.addEventListener('mouseleave',function(){ document.body.classList.remove('hov'); });
+  });
+})();
+</script>
+</body>
+</html>
