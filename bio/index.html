@@ -490,6 +490,52 @@
     * { cursor: auto; }
     .cursor-dot, .cursor-ring { display: none; }
   }
+
+  /* ── FABs ── */
+  #fab-cardapio, #fab-reserva {
+    position: fixed;
+    right: 20px; z-index: 495;
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 18px 12px 14px;
+    font-family: var(--fc);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .26em; text-transform: uppercase;
+    opacity: 0; transform: translateY(56px); pointer-events: none;
+    transition: opacity .55s cubic-bezier(.22,.61,.36,1),
+                transform .55s cubic-bezier(.22,.61,.36,1),
+                background .25s ease, box-shadow .25s ease;
+  }
+  #fab-cardapio {
+    bottom: 24px;
+    background: var(--c); color: var(--m);
+    box-shadow: 0 6px 24px rgba(178,34,34,.38);
+  }
+  #fab-reserva {
+    bottom: 77px;
+    background: var(--m); color: var(--b);
+    box-shadow: 0 6px 20px rgba(255,237,206,.14);
+  }
+  #fab-cardapio.fab-vis, #fab-reserva.fab-vis {
+    opacity: 1; transform: translateY(0); pointer-events: all;
+  }
+  #fab-cardapio:hover {
+    background: var(--cd);
+    box-shadow: 0 10px 36px rgba(178,34,34,.52);
+    transform: translateY(-2px);
+  }
+  #fab-reserva:hover {
+    background: var(--ow);
+    box-shadow: 0 10px 30px rgba(255,237,206,.26);
+    transform: translateY(-2px);
+  }
+  #fab-cardapio svg, #fab-reserva svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .fab-lbl { font-size: 9px; }
+  @media (max-width: 480px) {
+    #fab-cardapio, #fab-reserva { padding: 13px; right: 16px; }
+    .fab-lbl { display: none; }
+    #fab-cardapio { bottom: 20px; }
+    #fab-reserva { bottom: 71px; }
+  }
   </style>
 </head>
 <body>
@@ -551,7 +597,21 @@
       <div class="card-arrow">→</div>
     </a>
 
-    <!-- 2. MASSAS + CARNES — duo -->
+    <!-- 2. CARDÁPIO DIGITAL — full -->
+    <a href="../cardapio/cardapio-digital.pdf" class="card card-wide card-stripe" target="_blank" rel="noopener" aria-label="Ver Cardápio Digital">
+      <div class="card-img">
+        <img src="../assets/imgs/mc-menu.webp" alt="Cardápio Digital MC 1934" style="object-position: center 50%;">
+      </div>
+      <span class="badge">PDF</span>
+      <div class="card-body">
+        <span class="card-label">Massas · Carnes · Antipasto</span>
+        <h2 class="card-title">Ver<br>Cardápio</h2>
+        <p class="card-sub">Cardápio completo em PDF</p>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 3. MASSAS + CARNES — duo -->
     <div class="duo">
       <a href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20card%C3%A1pio%20de%20massas%20do%20MC%201934." class="card card-half card-stripe" target="_blank" rel="noopener" aria-label="Massas artesanais">
         <div class="card-img">
@@ -705,6 +765,29 @@
 
 </div>
 
+<!-- FAB RESERVA (WhatsApp) -->
+<a id="fab-reserva"
+   href="https://wa.me/5512991455301?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20MC%201934."
+   target="_blank" rel="noopener"
+   aria-label="Reservar mesa pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <span class="fab-lbl">Reservar</span>
+</a>
+
+<!-- FAB CARDÁPIO -->
+<a id="fab-cardapio"
+   href="../cardapio/cardapio-digital.pdf"
+   target="_blank" rel="noopener"
+   aria-label="Ver Cardápio Digital">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  </svg>
+  <span class="fab-lbl">Cardápio</span>
+</a>
+
 <script>
 /* cursor */
 (function(){
@@ -722,6 +805,14 @@
     el.addEventListener('mouseenter',function(){ document.body.classList.add('hov'); });
     el.addEventListener('mouseleave',function(){ document.body.classList.remove('hov'); });
   });
+})();
+
+/* FABs */
+(function(){
+  var fabC = document.getElementById('fab-cardapio');
+  var fabR = document.getElementById('fab-reserva');
+  setTimeout(function(){ if(fabR) fabR.classList.add('fab-vis'); }, 900);
+  setTimeout(function(){ if(fabC) fabC.classList.add('fab-vis'); }, 1100);
 })();
 </script>
 </body>
