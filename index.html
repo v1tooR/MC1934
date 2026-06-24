@@ -2269,17 +2269,9 @@ function closeModal(){}
     if (_rej) _rej.addEventListener('click', showFabs);
   }
 
-  var isTouch = window.matchMedia('(hover: none)').matches;
-
   function openMenu(e){
     if (e) e.preventDefault();
-    if (isTouch || window.innerWidth < 768) {
-      window.open(PDF, '_blank');
-      return;
-    }
-    mcFrame.src = PDF;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    window.open(PDF, '_blank', 'noopener');
   }
 
   function closeMenu(){
