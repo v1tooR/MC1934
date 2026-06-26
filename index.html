@@ -1377,6 +1377,19 @@
   .mc-x svg { width: 13px; height: 13px; color: var(--marfim); }
   #mcFrame { flex: 1; width: 100%; border: none; display: block; background: #f5f0ea; }
 
+  /* ── CRÉDITO IMAGENS TIMELINE ── */
+  .tl-img-credit {
+    position: absolute; bottom: 12px; left: 36px; z-index: 3;
+    font-family: var(--font-corpo); font-size: 8px;
+    letter-spacing: .07em; text-transform: uppercase;
+    color: var(--marfim); opacity: .32; pointer-events: none;
+  }
+  .rod-credit {
+    font-family: var(--font-corpo); font-size: 10px;
+    letter-spacing: .06em; color: var(--marfim); opacity: .3;
+    margin-bottom: 4px;
+  }
+
   /* ── TEMPORARIAMENTE OCULTO ── */
   #fab-cardapio, #modal-cardapio, .nav-cardapio { display: none !important; }
   </style>
@@ -1477,6 +1490,7 @@
         <div class="tl-dot"></div><div class="tl-dot"></div>
         <div class="tl-dot"></div><div class="tl-dot"></div>
       </div>
+      <p class="tl-img-credit" aria-hidden="true">Acervo de Imagens da Prefeitura de Campos do Jordão</p>
     </div>
 
     <!-- Capítulos com scroll -->
@@ -1876,6 +1890,7 @@
     <li><span class="rod-sep">·</span></li>
     <li><a href="politica-de-cookies.html" class="i18n" data-pt="Política de Cookies" data-en="Cookie Policy">Política de Cookies</a></li>
   </ul>
+  <p class="rod-credit">Imagens históricas: Acervo da Prefeitura de Campos do Jordão</p>
   <p class="rod-copy">© 2026 MC Dezenove34 — Campos do Jordão, SP</p>
 </footer>
 
